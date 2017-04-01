@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <style>
+    html, body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      margin: 4em;
+    }
+
+    input {
+      font-family: monospace;
+      width:80%;
+      display:block;
+    }
+
+    .main {
+      background: white;
+      border: solid 1px #c0c0c0;
+      border-radius: 8px;
+      padding: 2em;
+    }
+
+    .logdump  {
+      font-family: monospace;
+    }
+  </style>
+
+  <!-- not entirely sure what this does but it's in the flask docs -->
+  <script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  </script>
+
+  <script type="text/javascript" src="http://www.uploads.combinatoric.games/math.js"></script>
+</head>
+<body>
+
+  <section class="main">
+    <h1>Gale's Nim</h1>
+    <p><b>Find Nim Value</b></p>
+    <input type="text" id="game" name="game"/>
+    <button onclick="submit()">Submit</button>
+
+    <p><b>Find games with value</b></p>
+    size: <input type="text" id="size" name="size" />
+    value: <input type="text" id="value" name="value" />
+    <button onclick="find()">Find</button>
+
+    <p><b>Fill in value</b></p>
+    <p>The query 1 2 k *= 2 will give all values of k that satisfy the expression.</p>
+    <input type="text" id="query" name="query" />
+    <button onclick="fill()">Fill</button>
+
+    <p><b>Test claim</b></p>
+    <p>Write a formula in terms of n and *=. For example: n, n, 1 *= 0 is a valid input.</p>
+    <input type="text" id="formula" name="formula" />
+    <button onclick="verify()">Verify</button>
+
+    <p><b>Test conditional claim</b></p>
+    <p>In the first box, write a formula in terms of variables and nim addition. In the second box, write a claim for these variables. For instance, the following would be a valid input:</p>
+    <ul>
+      <li>(a-1) *+ (b-1) *+ (c-1) = 0</li>
+      <li>a b c = 0</li>
+    </ul>
+    <p>The syntax is a little weird. In the second box please use the space notation rather than the comma one.</p>
+    Condition:<input type="text" id="condition" name="condition" />
+    Claim:<input type="text" id="claim" name="claim" />
+    <button onclick="test()">Test</button>
+
+<!--     <p>Browse conjectures</p>
+
+    <p>Browse Game States</p> see game states + nim values, nimsum, etc
+ -->
+    <h3>Output</h3>
+    <div class="logdump">
+    </div>
+  </section>
+
+
+  <script type="text/javascript">
+  function test() {
+    logMessage("-----------------------");
+    var precondition = $("#condition").val().replace(/\*\+/g, "^|");
+    var claim = $("#claim").val();
+
+    //first parse the claim into a query string and a result
+    var halves1 = claim.split("=");
+    var checkvalue = halves1[1].replace(/\s+/g, "");
+    var qstring = halves1[0];
+
+    while(qstring.slice(-1)==" ") {
+      qstring = qstring.slice(0, -1);
+    }
+
+    var halves2= precondition.split("=");
+    var condition = halves2[0];
+    var conditionval = halves2[1].replace(/\s+/g, "");
+
+    var symbols = qstring.match(/[a-zA-Z]/g); //list of variables
+    var arglist = [];
+    for(var i=0; i<symbols.length; i++) arglist.push(0);
+
+    // var queries = [];
+    // var vals = [];
+
+    //now iterate through values that can satisfy the condition. for each one, test it
+    //loop recursively. each for loop creates a new for loop which terminates only if a count is reached
+    loop = (function(args, count) {
+      var limit = 10;
+      if(count>0) limit = args[count-1];
+      for(var i=1; i<=limit; i++) {
+        args[count] = i;
+        if(count < symbols.length-1) {
+          // var newargs = JSON.parse(JSON.stringify(args));
+          loop(args, count+1);
+        }
+        
+        //each args corresponds to a loop possibility
+        if(count==symbols.length-1) {
+
+          var parsestring = '{';
+          for(var j=0; j<args.length; j++) {
+            parsestring = parsestring + '"' + symbols[j] + '":'+args[j] +",";
+          }
+          parsestring = parsestring.slice(0, -1) + "}";
+          var scope = JSON.parse(parsestring);
+
+          if(math.eval(condition, scope)==conditionval) {
+            var newqstring = "" + qstring;
+            
+            logMessage("found that "+precondition+" for ["+args+"] has nim value "+conditionval);
+            for(var j=0; j<symbols.length; j++) {
+              newqstring = newqstring.replace(symbols[j], scope[symbols[j]]);
+            }
+            // queries.push()
+            check(newqstring.split(" ").reverse().join(" "), checkvalue);
+            logMessage("--");
+          } 
+        }
+      }
+    });
+    loop(arglist, 0);    
+  }
+  function fill() {
+    logMessage("----------");
+    var querystring = $('input[name="query"]').val();
+    var halves = querystring.split("*=");
+    var nimval = halves[1].replace(/\s+/g, "");
+
+    var regex = halves[0];
+    while(regex.slice(-1)==" ") {
+      regex = regex.slice(0, -1);
+    }
+    var parts = regex.split(" ");
+
+    var numbers = []; var symbols = [];
+    for(var i=0; i<parts.length; i++) {
+      if(parts[i].match(/[0-9]+/g) != null) {
+        numbers.push(parts[i]);
+      } else {
+        symbols.push(parts[i]);
+      }
+    }
+    // numbers.sort(function(a, b) {
+    //   return a - b;
+    // });
+    
+    var concatstring= "";
+    for(var i=0; i<numbers.length; i++) {
+      concatstring = concatstring + numbers[i]+ " ";
+    }
+    concatstring = concatstring.slice(0, -1);
+
+    // var expr = "^"+concatstring+"( [0-9]+){"+symbols.length+"}$";
+
+    // console.log(expr, nimval);
+
+    $.getJSON($SCRIPT_ROOT + '/_fill_val', {
+      // expression:expr,
+      key: concatstring,
+      value: nimval,
+      count: symbols.length
+    }, function(data) {
+      console.log(data);
+      for(var i=0; i<data.result.length; i++) {
+        logMessage("games of that form in db: " + data.result[i]);
+      }
+      logMessage("end find");
+    });
+  }
+  function find() {
+    logMessage("----------");
+
+    var nimval = $('input[name="value"]').val();
+    var size = $('input[name="size"]').val();
+
+    logMessage("finding all games of size "+size+" and value "+nimval);
+
+    $.getJSON($SCRIPT_ROOT + '/_search_val', {
+      count: size,
+      value: nimval
+    }, function(data) {
+      // console.log(data.result);
+      for(var i=0; i<data.result.length; i++) {
+        logMessage(data.result[i][0]);
+      }
+    });
+  }
+
+  function submit() {
+    var gameinput = $('input[name="game"]').val();
+    $.getJSON($SCRIPT_ROOT + '/_gales_nim', {
+      game: gameinput
+    }, function(data) {
+      logMessage(gameinput+" has nim value "+data.result);
+    });
+  }
+
+  function logMessage(astring) {
+    $(".logdump").append("<p>"+astring+"</p>");
+  }
+
+  function verify() {
+    logMessage("--");
+
+    var string = $('input[name="formula"]').val();
+    var halves = string.split("*=");
+    var checkvalue = halves[1].replace(/\s+/g, "");
+    var exprs = halves[0].split(",");
+
+    console.log(exprs);
+
+    var docontinue = true;
+    var count = 0;
+
+    while(docontinue) {
+      gamestr = "";
+      for (var i=0; i<exprs.length ;i++) {
+        var expr = exprs[i];
+        gamestr = gamestr + math.eval(expr, {n: count})+" ";
+      }  
+      gamestr = gamestr.slice(0, -1);
+      console.log(gamestr);
+
+
+      check(gamestr, checkvalue);
+
+      count++;  
+      if(count-1 == 15) docontinue = false;
+    }
+    
+  }
+
+  function check(instring, checkval) {
+    $.ajax({
+      dataType: "json",
+      url: $SCRIPT_ROOT + '/_check_val',
+      data: {game: instring, check:checkval},
+      success: function(data) {
+       logMessage(instring+" has nim value "+data.result+" : "+data.verified);
+      },
+      async: false
+    });
+  }
+
+  $('#game').keyup(function(event) {
+    if(event.which ==13) {
+      $("#submit").trigger("click");  
+    }
+  });
+
+
+  $("#condition").val("a *+ b *+ c = 0");
+  $("#claim").val("a b c =1");
+  $("#query").val("1 2 k *= 2");
+  // test();
+
+  </script>
+
+</body>
+</html>
