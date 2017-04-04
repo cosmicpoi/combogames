@@ -2,10 +2,10 @@ from flask import Flask, render_template, jsonify, request
 from comboGame import *
 MyApp = Flask(__name__)
 
-MyApp.config['MYSQL_DATABASE_USER'] = 'combogames'
-MyApp.config['MYSQL_DATABASE_PASSWORD'] = 'GalesNim'
-MyApp.config['MYSQL_DATABASE_DB'] = 'combogames'
-MyApp.config['MYSQL_DATABASE_HOST'] = 'mysql.combinatoric.games'
+MyApp.config['MYSQL_DATABASE_USER'] = '***'
+MyApp.config['MYSQL_DATABASE_PASSWORD'] = '***'
+MyApp.config['MYSQL_DATABASE_DB'] = '***'
+MyApp.config['MYSQL_DATABASE_HOST'] = '***'
 
 def arrayToString(anarray):
 	newstr = ""
