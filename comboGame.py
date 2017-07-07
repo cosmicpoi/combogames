@@ -94,23 +94,28 @@ class HubSpoke(ComboGame):
 
 
 class GalesNim(ComboGame):
-	def __init__(self, newgame):
+	def __init__(self, newgame, size):
+		self.number = size
 		super(GalesNim, self).__init__(sorted(newgame)) #isomorphic under ordering
 
 	def getNimValue(self):
 		#for speedup, consider loading the whole db into memory each startup
-		self.cursor.execute("SELECT * from NimValues WHERE Game = \""+arrayToString(self.game)+"\";")
+		cstring = ""
+		if self.number==2:
+			cstring="2"
+
+		self.cursor.execute("SELECT * from NimValues"+cstring+" WHERE Game = \""+arrayToString(self.game)+"\";")
 		data = self.cursor.fetchone()
 
 		if not (data is None):
 			return data[1]
 
-		if len(self.game) == 1:
+		if len(self.game) == self.number:
 			return 0
 
 		newnimvalue = self.mexMoves()
 
-		self.cursor.execute("INSERT into NimValues VALUES (\""+arrayToString(self.game)+"\", "+str(newnimvalue)+");")
+		self.cursor.execute("INSERT into NimValues"+cstring+" VALUES (\""+arrayToString(self.game)+"\", "+str(newnimvalue)+");")
 		self.conn.commit()
 
 		return newnimvalue
@@ -128,12 +133,12 @@ class GalesNim(ComboGame):
 			for value in [number-i-1 for i in range(number-1)]: #x can go to x-1, x-2 ... 1
 				newlist = copy.deepcopy(self.game)
 				newlist[index] = value
-				moves.append(GalesNim(newlist))
+				moves.append(GalesNim(newlist, self.number))
 
 			newlist = copy.deepcopy(self.game) #deep copy is slow, but otherwise you get pointer errors
 			newlist.pop(index) #i think this is a little faster than remove()?
 			# newlist.remove(number)
-			moves.append(GalesNim(newlist))
+			moves.append(GalesNim(newlist, self.number))
 
 			index+=1
 

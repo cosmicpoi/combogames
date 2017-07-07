@@ -1,0 +1,775 @@
+[ 2017-04-07 14:33:37.6827 41629/0x7fff78f26000 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-04-07 14:33:37.7017 41631/0x7fff78f26000 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-04-07 14:33:37.7030 41631/0x7fff78f26000 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-04-07 14:33:37.7092 41631/0x7fff78f26000 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 41631
+[ 2017-04-07 14:33:37.7177 41633/0x7fff78f26000 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-04-07 14:33:37.7192 41633/0x7fff78f26000 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 41633
+App 41646 stdout: 
+App 41646 stderr: Traceback (most recent call last):
+App 41646 stderr:   File "/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py", line 325, in <module>
+App 41646 stderr:     app_module = load_app()
+App 41646 stderr:   File "/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py", line 62, in load_app
+App 41646 stderr:     
+App 41646 stderr: return imp.load_source('passenger_wsgi', startup_file)
+App 41646 stderr:   File "/Users/alan/sites/combogames/passenger_wsgi.py", line 7, in <module>
+App 41646 stderr:     from app import MyApp as application
+App 41646 stderr:   File "/Users/alan/Sites/combogames/app.py", line 1, in <module>
+App 41646 stderr:     from flask import Flask, render_template, jsonify, request
+App 41646 stderr: ImportError: No module named flask
+[ 2017-04-07 14:33:40.5147 41631/0x7000006eb000 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /Users/alan/sites/combogames: An error occurred while starting the web application. It exited before signalling successful startup back to Phusion Passenger.
+  Error ID: 1334c317
+  Error details saved to: /var/folders/tc/3j3_rt196d7_fz2y5xbz1k1c0000gn/T//passenger-error-HXsI5z.html
+  Message from application: An error occurred while starting the web application. It exited before signalling successful startup back to Phusion Passenger. Please read <a href="https://github.com/phusion/passenger/wiki/Debugging-application-startup-problems">this article</a> for more information about this problem.<br>
+<h2>Raw process output:</h2>
+<pre>
+Traceback (most recent call last):
+  File &quot;/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py&quot;, line 325, in &lt;module&gt;
+    app_module = load_app()
+  File &quot;/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py&quot;, line 62, in load_app
+    return imp.load_source(&apos;passenger_wsgi&apos;, startup_file)
+  File &quot;/Users/alan/sites/combogames/passenger_wsgi.py&quot;, line 7, in &lt;module&gt;
+    from app import MyApp as application
+  File &quot;/Users/alan/Sites/combogames/app.py&quot;, line 1, in &lt;module&gt;
+    from flask import Flask, render_template, jsonify, request
+ImportError: No module named flask
+</pre>
+
+[ 2017-04-07 14:33:40.5547 41631/0x70000018a000 age/Cor/Con/CheckoutSession.cpp:285 ]: [Client 1-1] Cannot checkout session because a spawning error occurred. The identifier of the error is 1334c317. Please see earlier logs for details about the error.
+
+
+[ 2017-04-07 14:33:48.3396 41631/0x70000018a000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:33:48.3396 41633/0x700000104000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:33:48.3397 41633/0x7fff78f26000 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 14:33:48.3397 41631/0x7fff78f26000 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 14:33:48.3398 41633/0x70000020a000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:33:48.3398 41633/0x70000020a000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-04-07 14:33:48.3398 41633/0x700000104000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-04-07 14:33:48.3399 41631/0x70000018a000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-04-07 14:33:48.3400 41631/0x70000018a000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-04-07 14:33:48.3400 41631/0x700000290000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-04-07 14:33:48.3400 41631/0x700000290000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-04-07 14:33:48.3402 41631/0x700000396000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-04-07 14:33:48.3402 41631/0x700000396000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-04-07 14:33:48.3402 41631/0x70000049c000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-04-07 14:33:48.3403 41631/0x70000049c000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-04-07 14:33:48.3404 41631/0x7000005a2000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:33:48.3404 41631/0x7000005a2000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-04-07 14:33:48.3411 41633/0x7fff78f26000 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-04-07 14:33:48.3556 41631/0x7fff78f26000 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-04-07 14:34:02.9647 41678/0x7fff78f26000 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-04-07 14:34:02.9829 41680/0x7fff78f26000 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-04-07 14:34:02.9845 41680/0x7fff78f26000 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-04-07 14:34:02.9907 41680/0x7fff78f26000 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 41680
+[ 2017-04-07 14:34:02.9993 41682/0x7fff78f26000 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-04-07 14:34:03.0010 41682/0x7fff78f26000 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 41682
+App 41694 stdout: 
+App 41694 stderr: Traceback (most recent call last):
+App 41694 stderr:   File "/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py", line 325, in <module>
+App 41694 stderr:     app_module = load_app()
+App 41694 stderr:   File "/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py", line 62, in load_app
+App 41694 stderr:     return imp.load_source('passenger_wsgi', startup_file)
+App 41694 stderr:   File "/Users/alan/sites/combogames/passenger_wsgi.py", line 7, in <module>
+App 41694 stderr:     from app import MyApp as application
+App 41694 stderr:   File "/Users/alan/Sites/combogames/app.py", line 2, in <module>
+App 41694 stderr:     from comboGame import *
+App 41694 stderr:   File "/Users/alan/Sites/combogames/comboGame.py", line 2, in <module>
+App 41694 stderr:     from flaskext.mysql import MySQL
+App 41694 stderr: ImportError: No module named flaskext.mysql
+[ 2017-04-07 14:34:05.4934 41680/0x7000006eb000 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /Users/alan/sites/combogames: An error occurred while starting the web application. It exited before signalling successful startup back to Phusion Passenger.
+  Error ID: 3ad93d53
+  Error details saved to: /var/folders/tc/3j3_rt196d7_fz2y5xbz1k1c0000gn/T//passenger-error-wPwDyZ.html
+  Message from application: An error occurred while starting the web application. It exited before signalling successful startup back to Phusion Passenger. Please read <a href="https://github.com/phusion/passenger/wiki/Debugging-application-startup-problems">this article</a> for more information about this problem.<br>
+<h2>Raw process output:</h2>
+<pre>
+Traceback (most recent call last):
+  File &quot;/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py&quot;, line 325, in &lt;module&gt;
+    app_module = load_app()
+  File &quot;/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py&quot;, line 62, in load_app
+    return imp.load_source(&apos;passenger_wsgi&apos;, startup_file)
+  File &quot;/Users/alan/sites/combogames/passenger_wsgi.py&quot;, line 7, in &lt;module&gt;
+    from app import MyApp as application
+  File &quot;/Users/alan/Sites/combogames/app.py&quot;, line 2, in &lt;module&gt;
+    from comboGame import *
+  File &quot;/Users/alan/Sites/combogames/comboGame.py&quot;, line 2, in &lt;module&gt;
+    from flaskext.mysql import MySQL
+ImportError: No module named flaskext.mysql
+</pre>
+
+[ 2017-04-07 14:34:05.4997 41680/0x70000018a000 age/Cor/Con/CheckoutSession.cpp:285 ]: [Client 1-1] Cannot checkout session because a spawning error occurred. The identifier of the error is 3ad93d53. Please see earlier logs for details about the error.
+
+
+[ 2017-04-07 14:34:09.3633 41680/0x70000018a000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:34:09.3633 41682/0x700000104000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:34:09.3633 41680/0x7fff78f26000 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 14:34:09.3633 41682/0x7fff78f26000 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 14:34:09.3634 41682/0x700000104000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-04-07 14:34:09.3634 41682/0x70000020a000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:34:09.3634 41682/0x70000020a000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-04-07 14:34:09.3634 41680/0x70000018a000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-04-07 14:34:09.3635 41680/0x700000290000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-04-07 14:34:09.3635 41680/0x700000290000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-04-07 14:34:09.3636 41680/0x70000049c000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-04-07 14:34:09.3636 41680/0x700000396000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-04-07 14:34:09.3636 41680/0x70000049c000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-04-07 14:34:09.3636 41680/0x700000396000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-04-07 14:34:09.3635 41680/0x70000018a000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-04-07 14:34:09.3637 41680/0x7000005a2000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:34:09.3637 41680/0x7000005a2000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-04-07 14:34:09.3641 41682/0x7fff78f26000 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-04-07 14:34:09.3764 41680/0x7fff78f26000 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-04-07 14:34:40.6273 41732/0x7fff78f26000 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-04-07 14:34:40.6455 41734/0x7fff78f26000 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-04-07 14:34:40.6470 41734/0x7fff78f26000 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-04-07 14:34:40.6534 41734/0x7fff78f26000 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 41734
+[ 2017-04-07 14:34:40.6619 41736/0x7fff78f26000 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-04-07 14:34:40.6634 41736/0x7fff78f26000 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 41736
+App 41748 stdout: 
+App 41748 stderr: [2017-04-07 14:34:50,738] ERROR in app: Exception on /_gales_nim [GET]
+App 41748 stderr: Traceback (most recent call last):
+App 41748 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 41748 stderr:     response = self.full_dispatch_request()
+App 41748 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 41748 stderr:     rv = self.handle_user_exception(e)
+App 41748 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 41748 stderr:     reraise(exc_type, exc_value, tb)
+App 41748 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 41748 stderr:     rv = self.dispatch_request()
+App 41748 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 41748 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 41748 stderr:   File "/Users/alan/Sites/combogames/app.py", line 202, in gales_nim
+App 41748 stderr:     conn = mysql.connect()
+App 41748 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 41748 stderr:     return pymysql.connect(**self.connect_args)
+App 41748 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 41748 stderr:     return Connection(*args, **kwargs)
+App 41748 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 41748 stderr:     self.connect()
+App 41748 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 963, in connect
+App 41748 stderr:     raise exc
+App 41748 stderr: OperationalError: (2003, "Can't connect to MySQL server on '***' ([Errno 8] nodename nor servname provided, or not known)")
+
+
+[ 2017-04-07 14:34:56.6448 41734/0x70000018a000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:34:56.6448 41736/0x700000104000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:34:56.6449 41734/0x7fff78f26000 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 14:34:56.6449 41736/0x7fff78f26000 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 14:34:56.6449 41734/0x7fff78f26000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 41748, application /Users/alan/sites/combogames/public (development)
+[ 2017-04-07 14:34:56.6450 41736/0x70000020a000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:34:56.6450 41736/0x70000020a000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-04-07 14:34:56.6449 41736/0x700000104000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-04-07 14:34:56.6452 41734/0x7000005a2000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:34:56.6452 41734/0x7000005a2000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-04-07 14:34:56.6457 41736/0x7fff78f26000 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-04-07 14:34:56.6460 41734/0x700000290000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-04-07 14:34:56.6461 41734/0x700000290000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-04-07 14:34:56.6461 41734/0x70000049c000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-04-07 14:34:56.6460 41734/0x700000396000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-04-07 14:34:56.6462 41734/0x70000049c000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-04-07 14:34:56.6462 41734/0x70000018a000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-04-07 14:34:56.6462 41734/0x700000396000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-04-07 14:34:56.6462 41734/0x70000018a000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-04-07 14:34:56.6463 41734/0x7fff78f26000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 41748, application /Users/alan/sites/combogames/public (development)
+[ 2017-04-07 14:34:56.7642 41734/0x7fff78f26000 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-04-07 14:35:34.5023 41784/0x7fff78f26000 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-04-07 14:35:34.5212 41786/0x7fff78f26000 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-04-07 14:35:34.5227 41786/0x7fff78f26000 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-04-07 14:35:34.5288 41786/0x7fff78f26000 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 41786
+[ 2017-04-07 14:35:34.5371 41788/0x7fff78f26000 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-04-07 14:35:34.5386 41788/0x7fff78f26000 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 41788
+App 41799 stdout: 
+App 41799 stderr: [2017-04-07 14:35:39,962] ERROR in app: Exception on /_gales_nim [GET]
+App 41799 stderr: Traceback (most recent call last):
+App 41799 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 41799 stderr:     response = self.full_dispatch_request()
+App 41799 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 41799 stderr:     rv = self.handle_user_exception(e)
+App 41799 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 41799 stderr:     reraise(exc_type, exc_value, tb)
+App 41799 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 41799 stderr:     rv = self.dispatch_request()
+App 41799 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 41799 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 41799 stderr:   File "/Users/alan/Sites/combogames/app.py", line 202, in gales_nim
+App 41799 stderr:     conn = mysql.connect()
+App 41799 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 41799 stderr:     return pymysql.connect(**self.connect_args)
+App 41799 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 41799 stderr:     return Connection(*args, **kwargs)
+App 41799 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 41799 stderr:     self.connect()
+App 41799 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 41799 stderr:     self._request_authentication()
+App 41799 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 41799 stderr:     auth_packet = self._read_packet()
+App 41799 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 41799 stderr:     packet.check_error()
+App 41799 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 41799 stderr:     err.raise_mysql_exception(self._data)
+App 41799 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 41799 stderr:     raise errorclass(errno, errval)
+App 41799 stderr: OperationalError: (1044, u"Access denied for user 'combogames'@'192.83.228.245' to database 'NimValues'")
+
+[ 2017-04-07 14:35:42.9520 41788/0x700000104000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:35:42.9520 41788/0x7fff78f26000 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+
+[ 2017-04-07 14:35:42.9520 41786/0x70000018a000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:35:42.9521 41786/0x7fff78f26000 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 14:35:42.9521 41788/0x70000020a000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:35:42.9521 41788/0x700000104000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-04-07 14:35:42.9521 41788/0x70000020a000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-04-07 14:35:42.9521 41786/0x7fff78f26000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 41799, application /Users/alan/sites/combogames/public (development)
+[ 2017-04-07 14:35:42.9523 41786/0x70000018a000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-04-07 14:35:42.9523 41786/0x700000290000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-04-07 14:35:42.9523 41786/0x700000290000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-04-07 14:35:42.9523 41786/0x70000018a000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-04-07 14:35:42.9524 41786/0x700000396000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-04-07 14:35:42.9524 41786/0x700000396000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-04-07 14:35:42.9525 41786/0x70000049c000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-04-07 14:35:42.9525 41786/0x7000005a2000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:35:42.9525 41786/0x70000049c000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-04-07 14:35:42.9525 41786/0x7000005a2000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-04-07 14:35:42.9526 41786/0x7fff78f26000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 41799, application /Users/alan/sites/combogames/public (development)
+[ 2017-04-07 14:35:42.9529 41788/0x7fff78f26000 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-04-07 14:35:43.0697 41786/0x7fff78f26000 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-04-07 14:38:41.3222 41859/0x7fff78f26000 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-04-07 14:38:41.3424 41861/0x7fff78f26000 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-04-07 14:38:41.3439 41861/0x7fff78f26000 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-04-07 14:38:41.3504 41861/0x7fff78f26000 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 41861
+[ 2017-04-07 14:38:41.3590 41863/0x7fff78f26000 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-04-07 14:38:41.3608 41863/0x7fff78f26000 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 41863
+App 41875 stdout: 
+App 41875 stderr: [2017-04-07 14:38:49,261] ERROR in app: Exception on /_gales_nim [GET]
+App 41875 stderr: Traceback (most recent call last):
+App 41875 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 41875 stderr:     response = self.full_dispatch_request()
+App 41875 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 41875 stderr:     rv = self.handle_user_exception(e)
+App 41875 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 41875 stderr:     reraise(exc_type, exc_value, tb)
+App 41875 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 41875 stderr:     rv = self.dispatch_request()
+App 41875 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 41875 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 41875 stderr:   File "/Users/alan/Sites/combogames/app.py", line 208, in gales_nim
+App 41875 stderr:     thenimvalue = game.getNimValue()
+App 41875 stderr:   File "/Users/alan/Sites/combogames/comboGame.py", line 109, in getNimValue
+App 41875 stderr:     if len(self.game) == size:
+App 41875 stderr: NameError: global name 'size' is not defined
+
+
+[ 2017-04-07 14:38:51.8929 41863/0x700000104000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:38:51.8930 41861/0x70000018a000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:38:51.8930 41863/0x7fff78f26000 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 14:38:51.8930 41861/0x7fff78f26000 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 14:38:51.8931 41861/0x7fff78f26000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 41875, application /Users/alan/sites/combogames/public (development)
+[ 2017-04-07 14:38:51.8931 41863/0x700000104000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-04-07 14:38:51.8931 41863/0x70000020a000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:38:51.8932 41863/0x70000020a000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-04-07 14:38:51.8933 41861/0x70000018a000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-04-07 14:38:51.8934 41861/0x70000018a000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-04-07 14:38:51.8935 41861/0x700000396000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-04-07 14:38:51.8936 41861/0x700000396000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-04-07 14:38:51.8934 41861/0x700000290000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-04-07 14:38:51.8936 41861/0x70000049c000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-04-07 14:38:51.8936 41861/0x70000049c000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-04-07 14:38:51.8936 41861/0x700000290000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-04-07 14:38:51.8938 41861/0x7000005a2000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:38:51.8938 41861/0x7000005a2000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-04-07 14:38:51.8939 41861/0x7fff78f26000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 41875, application /Users/alan/sites/combogames/public (development)
+[ 2017-04-07 14:38:51.8948 41863/0x7fff78f26000 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-04-07 14:38:52.0146 41861/0x7fff78f26000 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-04-07 14:39:21.9260 41904/0x7fff78f26000 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-04-07 14:39:21.9460 41906/0x7fff78f26000 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-04-07 14:39:21.9476 41906/0x7fff78f26000 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-04-07 14:39:21.9537 41906/0x7fff78f26000 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 41906
+[ 2017-04-07 14:39:21.9623 41908/0x7fff78f26000 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-04-07 14:39:21.9642 41908/0x7fff78f26000 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 41908
+App 41922 stdout: 
+App 41922 stderr: [2017-04-07 14:40:17,402] ERROR in app: Exception on /_gales_nim [GET]
+App 41922 stderr: Traceback (most recent call last):
+App 41922 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 41922 stderr:     response = self.full_dispatch_request()
+App 41922 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 41922 stderr:     rv = self.handle_user_exception(e)
+App 41922 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 41922 stderr:     reraise(exc_type, exc_value, tb)
+App 41922 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 41922 stderr:     rv = self.dispatch_request()
+App 41922 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 41922 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 41922 stderr:   File "/Users/alan/Sites/combogames/app.py", line 208, in gales_nim
+App 41922 stderr:     thenimvalue = game.getNimValue()
+App 41922 stderr:   File "/Users/alan/Sites/combogames/comboGame.py", line 112, in getNimValue
+App 41922 stderr:     newnimvalue = self.mexMoves()
+App 41922 stderr:   File "/Users/alan/Sites/combogames/comboGame.py", line 38, in mexMoves
+App 41922 stderr:     self.getPossibleMoves()
+App 41922 stderr:   File "/Users/alan/Sites/combogames/comboGame.py", line 132, in getPossibleMoves
+App 41922 stderr:     moves.append(GalesNim(newlist))
+App 41922 stderr: TypeError: __init__() takes exactly 3 arguments (2 given)
+
+
+[ 2017-04-07 14:40:21.9600 41906/0x70000018a000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:40:21.9600 41908/0x700000104000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:40:21.9601 41908/0x7fff78f26000 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 14:40:21.9601 41906/0x7fff78f26000 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 14:40:21.9601 41906/0x7fff78f26000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 41922, application /Users/alan/sites/combogames/public (development)
+[ 2017-04-07 14:40:21.9601 41908/0x700000104000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-04-07 14:40:21.9601 41908/0x70000020a000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:40:21.9601 41908/0x70000020a000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-04-07 14:40:21.9602 41906/0x70000018a000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-04-07 14:40:21.9603 41906/0x700000290000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-04-07 14:40:21.9603 41906/0x700000290000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-04-07 14:40:21.9603 41906/0x70000018a000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-04-07 14:40:21.9604 41906/0x700000396000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-04-07 14:40:21.9604 41906/0x700000396000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-04-07 14:40:21.9605 41906/0x7000005a2000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:40:21.9605 41906/0x7000005a2000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-04-07 14:40:21.9606 41906/0x70000049c000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-04-07 14:40:21.9606 41906/0x70000049c000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-04-07 14:40:21.9607 41906/0x7fff78f26000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 41922, application /Users/alan/sites/combogames/public (development)
+[ 2017-04-07 14:40:21.9619 41908/0x7fff78f26000 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-04-07 14:40:22.0772 41906/0x7fff78f26000 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-04-07 14:40:39.0422 41984/0x7fff78f26000 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-04-07 14:40:39.0609 41987/0x7fff78f26000 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-04-07 14:40:39.0628 41987/0x7fff78f26000 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-04-07 14:40:39.0694 41987/0x7fff78f26000 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 41987
+[ 2017-04-07 14:40:39.0796 41989/0x7fff78f26000 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-04-07 14:40:39.0815 41989/0x7fff78f26000 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 41989
+App 42001 stdout: 
+App 42001 stderr: [2017-04-07 14:40:42,072] ERROR in app: Exception on /_gales_nim [GET]
+App 42001 stderr: Traceback (most recent call last):
+App 42001 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 42001 stderr:     response = self.full_dispatch_request()
+App 42001 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 42001 stderr:     rv = self.handle_user_exception(e)
+App 42001 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 42001 stderr:     reraise(exc_type, exc_value, tb)
+App 42001 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 42001 stderr:     rv = self.dispatch_request()
+App 42001 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 42001 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 42001 stderr:   File "/Users/alan/Sites/combogames/app.py", line 208, in gales_nim
+App 42001 stderr:     thenimvalue = game.getNimValue()
+App 42001 stderr:   File "/Users/alan/Sites/combogames/comboGame.py", line 112, in getNimValue
+App 42001 stderr:     newnimvalue = self.mexMoves()
+App 42001 stderr:   File "/Users/alan/Sites/combogames/comboGame.py", line 38, in mexMoves
+App 42001 stderr:     self.getPossibleMoves()
+App 42001 stderr:   File "/Users/alan/Sites/combogames/comboGame.py", line 137, in getPossibleMoves
+App 42001 stderr:     moves.append(GalesNim(newlist))
+App 42001 stderr: TypeError: __init__() takes exactly 3 arguments (2 given)
+
+
+[ 2017-04-07 14:40:55.0833 41987/0x70000018a000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:40:55.0833 41989/0x700000104000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:40:55.0833 41989/0x7fff78f26000 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 14:40:55.0833 41987/0x7fff78f26000 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 14:40:55.0833 41987/0x7fff78f26000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 42001, application /Users/alan/sites/combogames/public (development)
+[ 2017-04-07 14:40:55.0834 41989/0x700000104000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-04-07 14:40:55.0834 41989/0x70000020a000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:40:55.0835 41989/0x70000020a000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-04-07 14:40:55.0835 41987/0x70000018a000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-04-07 14:40:55.0836 41987/0x70000018a000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-04-07 14:40:55.0837 41987/0x700000290000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-04-07 14:40:55.0837 41987/0x700000290000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-04-07 14:40:55.0839 41987/0x70000049c000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-04-07 14:40:55.0839 41987/0x700000396000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-04-07 14:40:55.0839 41987/0x70000049c000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-04-07 14:40:55.0839 41987/0x700000396000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-04-07 14:40:55.0840 41987/0x7000005a2000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:40:55.0841 41987/0x7000005a2000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-04-07 14:40:55.0841 41987/0x7fff78f26000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 42001, application /Users/alan/sites/combogames/public (development)
+[ 2017-04-07 14:40:55.0851 41989/0x7fff78f26000 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-04-07 14:40:55.2024 41987/0x7fff78f26000 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-04-07 14:40:55.6637 42034/0x7fff78f26000 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-04-07 14:40:55.6869 42036/0x7fff78f26000 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-04-07 14:40:55.6882 42036/0x7fff78f26000 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-04-07 14:40:55.6961 42036/0x7fff78f26000 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 42036
+[ 2017-04-07 14:40:55.7064 42038/0x7fff78f26000 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-04-07 14:40:55.7089 42038/0x7fff78f26000 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 42038
+App 42050 stdout: 
+
+
+[ 2017-04-07 14:41:15.7550 42038/0x700000104000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:41:15.7550 42036/0x70000018a000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 14:41:15.7551 42038/0x7fff78f26000 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 14:41:15.7551 42036/0x7fff78f26000 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 14:41:15.7551 42036/0x7fff78f26000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 42050, application /Users/alan/sites/combogames/public (development)
+[ 2017-04-07 14:41:15.7551 42038/0x70000020a000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:41:15.7551 42038/0x70000020a000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-04-07 14:41:15.7551 42038/0x700000104000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-04-07 14:41:15.7553 42036/0x700000290000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-04-07 14:41:15.7553 42036/0x700000290000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-04-07 14:41:15.7553 42036/0x70000018a000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-04-07 14:41:15.7554 42036/0x700000396000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-04-07 14:41:15.7554 42036/0x70000049c000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-04-07 14:41:15.7554 42036/0x70000018a000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-04-07 14:41:15.7554 42036/0x70000049c000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-04-07 14:41:15.7554 42036/0x700000396000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-04-07 14:41:15.7555 42036/0x7000005a2000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-04-07 14:41:15.7556 42036/0x7000005a2000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-04-07 14:41:15.7557 42036/0x7fff78f26000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 42050, application /Users/alan/sites/combogames/public (development)
+[ 2017-04-07 14:41:15.7558 42038/0x7fff78f26000 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-04-07 14:41:15.8706 42036/0x7fff78f26000 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-04-07 14:41:16.4358 42084/0x7fff78f26000 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-04-07 14:41:16.4553 42086/0x7fff78f26000 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-04-07 14:41:16.4570 42086/0x7fff78f26000 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-04-07 14:41:16.4633 42086/0x7fff78f26000 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 42086
+[ 2017-04-07 14:41:16.4718 42088/0x7fff78f26000 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-04-07 14:41:16.4740 42088/0x7fff78f26000 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 42088
+App 42103 stdout: 
+
+
+[ 2017-04-07 15:55:52.2273 42086/0x70000018a000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 15:55:52.2274 42088/0x700000104000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-04-07 15:55:52.2274 42086/0x7fff78f26000 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 15:55:52.2274 42088/0x7fff78f26000 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-04-07 15:55:52.2274 42086/0x7fff78f26000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 42103, application /Users/alan/sites/combogames/public (development)
+[ 2017-04-07 15:55:52.2275 42088/0x700000104000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-04-07 15:55:52.2275 42088/0x70000020a000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-04-07 15:55:52.2275 42088/0x70000020a000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-04-07 15:55:52.2276 42086/0x70000018a000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-04-07 15:55:52.2277 42086/0x70000018a000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-04-07 15:55:52.2278 42086/0x700000290000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-04-07 15:55:52.2278 42086/0x700000290000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-04-07 15:55:52.2279 42086/0x700000396000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-04-07 15:55:52.2279 42086/0x700000396000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-04-07 15:55:52.2279 42086/0x70000049c000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-04-07 15:55:52.2280 42086/0x70000049c000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-04-07 15:55:52.2280 42086/0x7000005a2000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-04-07 15:55:52.2280 42086/0x7000005a2000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-04-07 15:55:52.2281 42086/0x7fff78f26000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 42103, application /Users/alan/sites/combogames/public (development)
+[ 2017-04-07 15:55:52.2283 42088/0x7fff78f26000 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+
+[ 2017-04-07 15:55:52.2301 42086/0x70000018a000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 1 more time(s) to force shutdown)
+[ 2017-05-09 11:42:29.7955 5852/0x7fff7a818000 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-05-09 11:42:29.8160 5854/0x7fff7a818000 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-05-09 11:42:29.8177 5854/0x7fff7a818000 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-05-09 11:42:29.8251 5854/0x7fff7a818000 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 5854
+[ 2017-05-09 11:42:29.8345 5856/0x7fff7a818000 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-05-09 11:42:29.8365 5856/0x7fff7a818000 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 5856
+App 5870 stdout: 
+
+
+[ 2017-05-09 11:44:13.8193 5856/0x700000104000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-05-09 11:44:13.8193 5854/0x70000018a000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-05-09 11:44:13.8193 5856/0x7fff7a818000 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-05-09 11:44:13.8193 5854/0x7fff7a818000 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-05-09 11:44:13.8194 5854/0x7fff7a818000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 5870, application /Users/alan/sites/combogames/public (development)
+[ 2017-05-09 11:44:13.8194 5856/0x700000104000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-05-09 11:44:13.8195 5856/0x70000020a000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-05-09 11:44:13.8195 5856/0x70000020a000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-05-09 11:44:13.8198 5854/0x7000005a2000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-05-09 11:44:13.8199 5854/0x7000005a2000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-05-09 11:44:13.8204 5856/0x7fff7a818000 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-05-09 11:44:13.8205 5854/0x700000290000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-05-09 11:44:13.8205 5854/0x700000396000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-05-09 11:44:13.8206 5854/0x70000018a000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-05-09 11:44:13.8206 5854/0x700000290000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-05-09 11:44:13.8206 5854/0x700000396000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-05-09 11:44:13.8206 5854/0x70000018a000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-05-09 11:44:13.8207 5854/0x70000049c000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-05-09 11:44:13.8207 5854/0x70000049c000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-05-09 11:44:13.8210 5854/0x7fff7a818000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 5870, application /Users/alan/sites/combogames/public (development)
+[ 2017-05-09 11:44:13.9392 5854/0x7fff7a818000 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-05-09 11:44:14.7822 5958/0x7fff7a818000 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-05-09 11:44:14.7998 5960/0x7fff7a818000 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-05-09 11:44:14.8011 5960/0x7fff7a818000 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-05-09 11:44:14.8074 5960/0x7fff7a818000 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 5960
+[ 2017-05-09 11:44:14.8154 5962/0x7fff7a818000 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-05-09 11:44:14.8169 5962/0x7fff7a818000 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 5962
+App 5974 stdout: 
+App 5974 stderr: Traceback (most recent call last):
+App 5974 stderr:   File "/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py", line 325, in <module>
+App 5974 stderr:     app_module = load_app()
+App 5974 stderr:   File "/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py", line 62, in load_app
+App 5974 stderr:     return imp.load_source('passenger_wsgi', startup_file)
+App 5974 stderr:   File "/Users/alan/sites/combogames/passenger_wsgi.py", line 7, in <module>
+App 5974 stderr:     from app import MyApp as application
+App 5974 stderr:   File "/Users/alan/Sites/combogames/app.py", line 23, in <module>
+App 5974 stderr:     @MyApp.route("test")
+App 5974 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1080, in decorator
+App 5974 stderr:     self.add_url_rule(rule, endpoint, f, **options)
+App 5974 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 64, in wrapper_func
+App 5974 stderr:     return f(self, *args, **kwargs)
+App 5974 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1043, in add_url_rule
+App 5974 stderr:     rule = self.url_rule_class(rule, methods=methods, **options)
+App 5974 stderr:   File "/usr/local/lib/python2.7/site-packages/werkzeug/routing.py", line 603, in __init__
+App 5974 stderr:     raise ValueError('urls must start with a leading slash')
+App 5974 stderr: ValueError: urls must start with a leading slash
+[ 2017-05-09 11:44:17.4105 5960/0x7000006eb000 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /Users/alan/sites/combogames: An error occurred while starting the web application. It exited before signalling successful startup back to Phusion Passenger.
+  Error ID: c0f443fc
+  Error details saved to: /var/folders/tc/3j3_rt196d7_fz2y5xbz1k1c0000gn/T//passenger-error-x5Uuw4.html
+  Message from application: An error occurred while starting the web application. It exited before signalling successful startup back to Phusion Passenger. Please read <a href="https://github.com/phusion/passenger/wiki/Debugging-application-startup-problems">this article</a> for more information about this problem.<br>
+<h2>Raw process output:</h2>
+<pre>
+Traceback (most recent call last):
+  File &quot;/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py&quot;, line 325, in &lt;module&gt;
+    app_module = load_app()
+  File &quot;/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py&quot;, line 62, in load_app
+    return imp.load_source(&apos;passenger_wsgi&apos;, startup_file)
+  File &quot;/Users/alan/sites/combogames/passenger_wsgi.py&quot;, line 7, in &lt;module&gt;
+    from app import MyApp as application
+  File &quot;/Users/alan/Sites/combogames/app.py&quot;, line 23, in &lt;module&gt;
+    @MyApp.route(&quot;test&quot;)
+  File &quot;/usr/local/lib/python2.7/site-packages/flask/app.py&quot;, line 1080, in decorator
+    self.add_url_rule(rule, endpoint, f, **options)
+  File &quot;/usr/local/lib/python2.7/site-packages/flask/app.py&quot;, line 64, in wrapper_func
+    return f(self, *args, **kwargs)
+  File &quot;/usr/local/lib/python2.7/site-packages/flask/app.py&quot;, line 1043, in add_url_rule
+    rule = self.url_rule_class(rule, methods=methods, **options)
+  File &quot;/usr/local/lib/python2.7/site-packages/werkzeug/routing.py&quot;, line 603, in __init__
+    raise ValueError(&apos;urls must start with a leading slash&apos;)
+ValueError: urls must start with a leading slash
+</pre>
+
+[ 2017-05-09 11:44:17.4179 5960/0x70000018a000 age/Cor/Con/CheckoutSession.cpp:285 ]: [Client 1-1] Cannot checkout session because a spawning error occurred. The identifier of the error is c0f443fc. Please see earlier logs for details about the error.
+App 5985 stdout: 
+App 5985 stderr: Traceback (most recent call last):
+App 5985 stderr:   File "/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py", line 325, in <module>
+App 5985 stderr:     app_module = load_app()
+App 5985 stderr:   File "/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py", line 62, in load_app
+App 5985 stderr:     return imp.load_source('passenger_wsgi', startup_file)
+App 5985 stderr:   File "/Users/alan/sites/combogames/passenger_wsgi.py", line 7, in <module>
+App 5985 stderr:     from app import MyApp as application
+App 5985 stderr:   File "/Users/alan/Sites/combogames/app.py", line 23, in <module>
+App 5985 stderr:     @MyApp.route("test")
+App 5985 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1080, in decorator
+App 5985 stderr:     self.add_url_rule(rule, endpoint, f, **options)
+App 5985 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 64, in wrapper_func
+App 5985 stderr:     return f(self, *args, **kwargs)
+App 5985 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1043, in add_url_rule
+App 5985 stderr:     rule = self.url_rule_class(rule, methods=methods, **options)
+App 5985 stderr:   File "/usr/local/lib/python2.7/site-packages/werkzeug/routing.py", line 603, in __init__
+App 5985 stderr:     raise ValueError('urls must start with a leading slash')
+App 5985 stderr: ValueError: urls must start with a leading slash
+[ 2017-05-09 11:44:18.2475 5960/0x7000006eb000 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /Users/alan/sites/combogames: An error occurred while starting the web application. It exited before signalling successful startup back to Phusion Passenger.
+  Error ID: 067b3206
+  Error details saved to: /var/folders/tc/3j3_rt196d7_fz2y5xbz1k1c0000gn/T//passenger-error-SoEDU6.html
+  Message from application: An error occurred while starting the web application. It exited before signalling successful startup back to Phusion Passenger. Please read <a href="https://github.com/phusion/passenger/wiki/Debugging-application-startup-problems">this article</a> for more information about this problem.<br>
+<h2>Raw process output:</h2>
+<pre>
+Traceback (most recent call last):
+  File &quot;/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py&quot;, line 325, in &lt;module&gt;
+    app_module = load_app()
+  File &quot;/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py&quot;, line 62, in load_app
+    return imp.load_source(&apos;passenger_wsgi&apos;, startup_file)
+  File &quot;/Users/alan/sites/combogames/passenger_wsgi.py&quot;, line 7, in &lt;module&gt;
+    from app import MyApp as application
+  File &quot;/Users/alan/Sites/combogames/app.py&quot;, line 23, in &lt;module&gt;
+    @MyApp.route(&quot;test&quot;)
+  File &quot;/usr/local/lib/python2.7/site-packages/flask/app.py&quot;, line 1080, in decorator
+    self.add_url_rule(rule, endpoint, f, **options)
+  File &quot;/usr/local/lib/python2.7/site-packages/flask/app.py&quot;, line 64, in wrapper_func
+    return f(self, *args, **kwargs)
+  File &quot;/usr/local/lib/python2.7/site-packages/flask/app.py&quot;, line 1043, in add_url_rule
+    rule = self.url_rule_class(rule, methods=methods, **options)
+  File &quot;/usr/local/lib/python2.7/site-packages/werkzeug/routing.py&quot;, line 603, in __init__
+    raise ValueError(&apos;urls must start with a leading slash&apos;)
+ValueError: urls must start with a leading slash
+</pre>
+
+[ 2017-05-09 11:44:18.2537 5960/0x700000290000 age/Cor/Con/CheckoutSession.cpp:285 ]: [Client 2-1] Cannot checkout session because a spawning error occurred. The identifier of the error is 067b3206. Please see earlier logs for details about the error.
+App 5996 stdout: 
+App 5996 stderr: Traceback (most recent call last):
+App 5996 stderr:   File "/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py", line 325, in <module>
+App 5996 stderr:     app_module = load_app()
+App 5996 stderr:   File "/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py", line 62, in load_app
+App 5996 stderr:     return imp.load_source('passenger_wsgi', startup_file)
+App 5996 stderr:   File "/Users/alan/sites/combogames/passenger_wsgi.py", line 7, in <module>
+App 5996 stderr:     from app import MyApp as application
+App 5996 stderr:   File "/Users/alan/Sites/combogames/app.py", line 23, in <module>
+App 5996 stderr:     @MyApp.route("test")
+App 5996 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1080, in decorator
+App 5996 stderr:     self.add_url_rule(rule, endpoint, f, **options)
+App 5996 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 64, in wrapper_func
+App 5996 stderr:     return f(self, *args, **kwargs)
+App 5996 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1043, in add_url_rule
+App 5996 stderr:     rule = self.url_rule_class(rule, methods=methods, **options)
+App 5996 stderr:   File "/usr/local/lib/python2.7/site-packages/werkzeug/routing.py", line 603, in __init__
+App 5996 stderr:     raise ValueError('urls must start with a leading slash')
+App 5996 stderr: ValueError: urls must start with a leading slash
+App 5996 stderr: 
+[ 2017-05-09 11:44:58.1867 5960/0x7000000c7000 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /Users/alan/sites/combogames: An error occurred while starting the web application. It exited before signalling successful startup back to Phusion Passenger.
+  Error ID: 5c5156ed
+  Error details saved to: /var/folders/tc/3j3_rt196d7_fz2y5xbz1k1c0000gn/T//passenger-error-StOstZ.html
+  Message from application: An error occurred while starting the web application. It exited before signalling successful startup back to Phusion Passenger. Please read <a href="https://github.com/phusion/passenger/wiki/Debugging-application-startup-problems">this article</a> for more information about this problem.<br>
+<h2>Raw process output:</h2>
+<pre>
+Traceback (most recent call last):
+  File &quot;/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py&quot;, line 325, in &lt;module&gt;
+    app_module = load_app()
+  File &quot;/usr/local/Cellar/passenger/5.0.26/libexec/src/helper-scripts/wsgi-loader.py&quot;, line 62, in load_app
+    return imp.load_source(&apos;passenger_wsgi&apos;, startup_file)
+  File &quot;/Users/alan/sites/combogames/passenger_wsgi.py&quot;, line 7, in &lt;module&gt;
+    from app import MyApp as application
+  File &quot;/Users/alan/Sites/combogames/app.py&quot;, line 23, in &lt;module&gt;
+    @MyApp.route(&quot;test&quot;)
+  File &quot;/usr/local/lib/python2.7/site-packages/flask/app.py&quot;, line 1080, in decorator
+    self.add_url_rule(rule, endpoint, f, **options)
+  File &quot;/usr/local/lib/python2.7/site-packages/flask/app.py&quot;, line 64, in wrapper_func
+    return f(self, *args, **kwargs)
+  File &quot;/usr/local/lib/python2.7/site-packages/flask/app.py&quot;, line 1043, in add_url_rule
+    rule = self.url_rule_class(rule, methods=methods, **options)
+  File &quot;/usr/local/lib/python2.7/site-packages/werkzeug/routing.py&quot;, line 603, in __init__
+    raise ValueError(&apos;urls must start with a leading slash&apos;)
+ValueError: urls must start with a leading slash
+</pre>
+
+[ 2017-05-09 11:44:58.1937 5960/0x700000396000 age/Cor/Con/CheckoutSession.cpp:285 ]: [Client 3-1] Cannot checkout session because a spawning error occurred. The identifier of the error is 5c5156ed. Please see earlier logs for details about the error.
+
+[ 2017-05-09 11:45:05.3849 5960/0x70000018a000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-05-09 11:45:05.3850 5960/0x7fff7a818000 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+
+[ 2017-05-09 11:45:05.3851 5962/0x700000104000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-05-09 11:45:05.3851 5960/0x70000018a000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-05-09 11:45:05.3851 5962/0x7fff7a818000 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-05-09 11:45:05.3852 5960/0x70000018a000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-05-09 11:45:05.3852 5962/0x700000104000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-05-09 11:45:05.3852 5960/0x700000290000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-05-09 11:45:05.3852 5960/0x700000290000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-05-09 11:45:05.3852 5962/0x70000020a000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-05-09 11:45:05.3853 5962/0x70000020a000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-05-09 11:45:05.3853 5960/0x700000396000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-05-09 11:45:05.3853 5960/0x700000396000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-05-09 11:45:05.3853 5960/0x70000049c000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-05-09 11:45:05.3853 5960/0x70000049c000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-05-09 11:45:05.3854 5960/0x7000005a2000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-05-09 11:45:05.3854 5960/0x7000005a2000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-05-09 11:45:05.3858 5962/0x7fff7a818000 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-05-09 11:45:05.3990 5960/0x7fff7a818000 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-05-09 11:45:06.1950 6019/0x7fff7a818000 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-05-09 11:45:06.2128 6021/0x7fff7a818000 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-05-09 11:45:06.2142 6021/0x7fff7a818000 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-05-09 11:45:06.2205 6021/0x7fff7a818000 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 6021
+[ 2017-05-09 11:45:06.2282 6023/0x7fff7a818000 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-05-09 11:45:06.2297 6023/0x7fff7a818000 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 6023
+App 6034 stdout: 
+
+
+[ 2017-05-09 11:46:34.9617 6021/0x70000018a000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-05-09 11:46:34.9617 6023/0x700000104000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-05-09 11:46:34.9617 6023/0x7fff7a818000 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-05-09 11:46:34.9617 6021/0x7fff7a818000 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-05-09 11:46:34.9617 6021/0x7fff7a818000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 6034, application /Users/alan/sites/combogames/public (development)
+[ 2017-05-09 11:46:34.9618 6023/0x70000020a000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-05-09 11:46:34.9618 6023/0x70000020a000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-05-09 11:46:34.9618 6023/0x700000104000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-05-09 11:46:34.9619 6021/0x70000018a000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-05-09 11:46:34.9619 6021/0x700000290000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-05-09 11:46:34.9619 6021/0x700000290000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-05-09 11:46:34.9620 6021/0x700000396000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-05-09 11:46:34.9620 6021/0x70000049c000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-05-09 11:46:34.9620 6021/0x700000396000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-05-09 11:46:34.9619 6021/0x70000018a000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-05-09 11:46:34.9620 6021/0x70000049c000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-05-09 11:46:34.9621 6021/0x7000005a2000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-05-09 11:46:34.9621 6021/0x7000005a2000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-05-09 11:46:34.9622 6021/0x7fff7a818000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 6034, application /Users/alan/sites/combogames/public (development)
+[ 2017-05-09 11:46:34.9625 6023/0x7fff7a818000 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-05-09 11:46:35.0757 6021/0x7fff7a818000 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-05-09 11:46:35.5545 6096/0x7fff7a818000 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-05-09 11:46:35.5725 6098/0x7fff7a818000 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-05-09 11:46:35.5739 6098/0x7fff7a818000 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-05-09 11:46:35.5802 6098/0x7fff7a818000 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 6098
+[ 2017-05-09 11:46:35.5882 6100/0x7fff7a818000 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-05-09 11:46:35.5899 6100/0x7fff7a818000 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 6100
+App 6111 stdout: 
+
+[ 2017-05-09 11:57:13.0664 6098/0x70000018a000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-05-09 11:57:13.0664 6098/0x7fff7a818000 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+
+[ 2017-05-09 11:57:13.0665 6100/0x700000104000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-05-09 11:57:13.0665 6098/0x7fff7a818000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 6111, application /Users/alan/sites/combogames/public (development)
+[ 2017-05-09 11:57:13.0665 6100/0x7fff7a818000 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-05-09 11:57:13.0666 6100/0x700000104000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-05-09 11:57:13.0666 6100/0x70000020a000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-05-09 11:57:13.0666 6100/0x70000020a000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-05-09 11:57:13.0666 6098/0x70000018a000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-05-09 11:57:13.0667 6098/0x700000290000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-05-09 11:57:13.0667 6098/0x700000290000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-05-09 11:57:13.0668 6098/0x700000396000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-05-09 11:57:13.0668 6098/0x700000396000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-05-09 11:57:13.0668 6098/0x70000049c000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-05-09 11:57:13.0667 6098/0x70000018a000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-05-09 11:57:13.0668 6098/0x70000049c000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-05-09 11:57:13.0669 6098/0x7000005a2000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-05-09 11:57:13.0669 6098/0x7000005a2000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-05-09 11:57:13.0670 6098/0x7fff7a818000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 6111, application /Users/alan/sites/combogames/public (development)
+[ 2017-05-09 11:57:13.0673 6100/0x7fff7a818000 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-05-09 11:57:13.1839 6098/0x7fff7a818000 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-06-09 17:22:25.1403 6999/0x7fffebdfe3c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-06-09 17:22:25.1698 7001/0x7fffebdfe3c0 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-06-09 17:22:25.1722 7001/0x7fffebdfe3c0 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-06-09 17:22:25.1870 7001/0x7fffebdfe3c0 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 7001
+[ 2017-06-09 17:22:25.1995 7003/0x7fffebdfe3c0 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-06-09 17:22:25.2027 7003/0x7fffebdfe3c0 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 7003
+App 7018 stdout: 
+App 7018 stderr: [2017-06-09 17:22:50,318] ERROR in app: Exception on /_gales_nim [GET]
+App 7018 stderr: Traceback (most recent call last):
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 7018 stderr:     response = self.full_dispatch_request()
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 7018 stderr:     rv = self.handle_user_exception(e)
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 7018 stderr:     reraise(exc_type, exc_value, tb)
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 7018 stderr:     rv = self.dispatch_request()
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 7018 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 7018 stderr:   File "/Users/alan/Sites/combogames/app.py", line 210, in gales_nim
+App 7018 stderr:     conn = mysql.connect()
+App 7018 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 7018 stderr:     return pymysql.connect(**self.connect_args)
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 7018 stderr:     return Connection(*args, **kwargs)
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 7018 stderr:     self.connect()
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 963, in connect
+App 7018 stderr:     raise exc
+App 7018 stderr: OperationalError: (2003, "Can't connect to MySQL server on 'mysql.combinatoric.games' (timed out)")
+App 7018 stderr: [2017-06-09 17:23:00,326] ERROR in app: Exception on /_gales_nim [GET]
+App 7018 stderr: Traceback (most recent call last):
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 7018 stderr:     response = self.full_dispatch_request()
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 7018 stderr:     rv = self.handle_user_exception(e)
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 7018 stderr:     reraise(exc_type, exc_value, tb)
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 7018 stderr:     rv = self.dispatch_request()
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 7018 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 7018 stderr:   File "/Users/alan/Sites/combogames/app.py", line 210, in gales_nim
+App 7018 stderr:     conn = mysql.connect()
+App 7018 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 7018 stderr:     return pymysql.connect(**self.connect_args)
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 7018 stderr:     return Connection(*args, **kwargs)
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 7018 stderr:     self.connect()
+App 7018 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 963, in connect
+App 7018 stderr:     raise exc
+App 7018 stderr: OperationalError: (2003, "Can't connect to MySQL server on 'mysql.combinatoric.games' (timed out)")
+
+
+[ 2017-06-09 17:37:19.8926 7001/0x700000235000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-06-09 17:37:19.8927 7001/0x7fffebdfe3c0 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-06-09 17:37:19.8927 7003/0x70000c109000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-06-09 17:37:19.8928 7003/0x7fffebdfe3c0 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-06-09 17:37:19.8930 7001/0x7fffebdfe3c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 7018, application /Users/alan/sites/combogames/public (development)
+[ 2017-06-09 17:37:19.8941 7001/0x700000235000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-06-09 17:37:19.8942 7001/0x700000235000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-06-09 17:37:19.8939 7001/0x700000441000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-06-09 17:37:19.8942 7001/0x700000441000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-06-09 17:37:19.8940 7001/0x700000547000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-06-09 17:37:19.8943 7001/0x70000033b000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-06-09 17:37:19.8943 7001/0x70000033b000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-06-09 17:37:19.8943 7001/0x700000547000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-06-09 17:37:19.8942 7003/0x70000c109000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-06-09 17:37:19.8945 7003/0x70000c20f000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-06-09 17:37:19.8946 7003/0x70000c20f000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-06-09 17:37:19.8949 7001/0x70000064d000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-06-09 17:37:19.8951 7001/0x70000064d000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-06-09 17:37:19.8960 7003/0x7fffebdfe3c0 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-06-09 17:37:19.8960 7001/0x7fffebdfe3c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 7018, application /Users/alan/sites/combogames/public (development)
+[ 2017-06-09 17:37:20.0297 7001/0x7fffebdfe3c0 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished

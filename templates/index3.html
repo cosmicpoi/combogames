@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <style>
+    html, body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      margin: 4em;
+    }
+
+    input {
+      font-family: monospace;
+      width:80%;
+      display:block;
+    }
+
+    .main {
+      background: white;
+      border: solid 1px #c0c0c0;
+      border-radius: 8px;
+      padding: 2em;
+    }
+
+    .logdump  {
+      font-family: monospace;
+    }
+  </style>
+
+  <!-- not entirely sure what this does but it's in the flask docs -->
+  <script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  </script>
+
+  <script type="text/javascript" src="http://www.uploads.combinatoric.games/math.js"></script>
+</head>
+<body>
+
+  <section class="main">
+    <h1>Gale's Nim</h1>
+    <p><b>Find Nim Value</b></p>
+    <input type="text" id="game" name="game"/>
+    <button onclick="submit()">Submit</button>
+
+
+    <h3>Output</h3>
+    <div class="logdump">
+    </div>
+  </section>
+
+
+  <script type="text/javascript">
+  
+  function submit() {
+    var gameinput = $('input[name="game"]').val();
+    $.getJSON($SCRIPT_ROOT + '/_gales_nim2', {
+      game: gameinput
+    }, function(data) {
+      logMessage(gameinput+" has nim value "+data.result);
+    });
+  }
+  function logMessage(astring) {
+    $(".logdump").append("<p>"+astring+"</p>");
+  }
+  </script>
+
+</body>
+</html>
