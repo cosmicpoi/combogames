@@ -3,28 +3,50 @@
 <head>
   <title>Hello</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700" rel="stylesheet">
   <style>
     html, body {
-      font-family: sans-serif;
+      font-family:'Raleway',sans-serif;
       background: #f0f0f0;
       margin: 4em;
     }
 
     input {
       font-family: monospace;
-      width:80%;
-      display:block;
+      display:inline;
     }
 
     .main {
-      background: white;
-      border: solid 1px #c0c0c0;
-      border-radius: 8px;
-      padding: 2em;
+      display:flex;
+      flex-wrap:wrap;
     }
 
     .logdump  {
       font-family: monospace;
+    }
+    .panel {
+      background: white;
+      border: solid 1px #c0c0c0;
+      border-radius: 8px;
+      /*padding: 2em;*/
+      max-width:50%;
+      flex-grow: 1;
+      margin:0;
+      margin:0.5em;
+    }
+    .head {
+      background:#e3e3e3;
+      width:100%;
+      margin:0;
+    }
+    .panelform {
+      padding:0.5em 1em;
+    }
+    .panel h2 {
+      padding:0.3em 0.7em;
+      margin:0;
+      text-transform:uppercase;
+      font-weight:400;
     }
   </style>
 
@@ -37,46 +59,63 @@
 </head>
 <body>
 
-  <section class="main">
     <h1>Gale's Nim</h1>
-    <p><b>Find Nim Value</b></p>
-    <input type="text" id="game" name="game"/>
-    <button onclick="submit()">Submit</button>
+  <section class="main">
+    <div class="panel">
+      <div class="head"><h2>Find Nim Value</h2></div>
+      <div class="panelform">
+        <input type="text" id="game" name="game"/>
+        <button onclick="submit()">Submit</button>
+      </div>
+    </div>
 
-    <p><b>Find games with value</b></p>
-    size: <input type="text" id="size" name="size" />
-    value: <input type="text" id="value" name="value" />
-    <button onclick="find()">Find</button>
+    <div class="panel">
+      <div class="head"><h2>Find games with value</h2></div>
+      <div class="panelform">
+        size: <input type="text" id="size" name="size" />
+        value: <input type="text" id="value" name="value" />
+        <button onclick="find()">Find</button>
+      </div>
+    </div>
 
-    <p><b>Fill in value</b></p>
-    <p>The query 1 2 k *= 2 will give all values of k that satisfy the expression.</p>
-    <input type="text" id="query" name="query" />
-    <button onclick="fill()">Fill</button>
+    <div class="panel">
+      <div class="head"><h2>Fill in value</h2></div>
+      <div class="panelform">
+        <p>The query 1 2 k *= 2 will give all values of k that satisfy the expression.</p>
+        <input type="text" id="query" name="query" />
+        <button onclick="fill()">Fill</button>
+      </div>  
+    </div>
 
-    <p><b>Test claim</b></p>
-    <p>Write a formula in terms of n and *=. For example: n, n, 1 *= 0 is a valid input.</p>
-    <input type="text" id="formula" name="formula" />
-    <button onclick="verify()">Verify</button>
+    <div class="panel">
+      <div class="head"><h2>Test claim</h2></div>
+      <div class="panelform">
+        <p>Write a formula in terms of n and *=. For example: n, n, 1 *= 0 is a valid input.</p>
+        <input type="text" id="formula" name="formula" />
+        <button onclick="verify()">Verify</button>
+      </div>
+    </div>
 
-    <p><b>Test conditional claim</b></p>
-    <p>In the first box, write a formula in terms of variables and nim addition. In the second box, write a claim for these variables. For instance, the following would be a valid input:</p>
-    <ul>
-      <li>(a-1) *+ (b-1) *+ (c-1) = 0</li>
-      <li>a b c = 0</li>
-    </ul>
-    <p>The syntax is a little weird. In the second box please use the space notation rather than the comma one.</p>
-    Condition:<input type="text" id="condition" name="condition" />
-    Claim:<input type="text" id="claim" name="claim" />
-    <button onclick="test()">Test</button>
-
-<!--     <p>Browse conjectures</p>
-
-    <p>Browse Game States</p> see game states + nim values, nimsum, etc
- -->
-    <h3>Output</h3>
-    <div class="logdump">
+    <div class="panel">
+      <div class="head"><h2>Test conditional claim</h2></div>
+      <div class="panelform">
+        <p>In the first box, write a formula in terms of variables and nim addition. In the second box, write a claim for these variables. For instance, the following would be a valid input:</p>
+        <ul>
+          <li>(a-1) *+ (b-1) *+ (c-1) = 0</li>
+          <li>a b c = 0</li>
+        </ul>
+        <p>The syntax is a little weird. In the second box please use the space notation rather than the comma one.</p>
+        Condition:<input type="text" id="condition" name="condition" />
+        Claim:<input type="text" id="claim" name="claim" />
+        <button onclick="test()">Test</button>
+      </div>  
     </div>
   </section>
+  <div class="output">
+    <h2>Output</h2>
+    <div class="logdump">
+    </div>
+  </div>
 
 
   <script type="text/javascript">

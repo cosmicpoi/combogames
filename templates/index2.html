@@ -3,9 +3,10 @@
 <head>
   <title>Hello</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700" rel="stylesheet">
   <style>
     html, body {
-      font-family: sans-serif;
+      font-family: 'Raleway',sans-serif;
       background: #f0f0f0;
       margin: 4em;
     }
@@ -14,7 +15,9 @@
       background: white;
       border: solid 1px #c0c0c0;
       border-radius: 8px;
-      padding: 2em;
+    }
+    .body {
+      margin: 1em 1.5em;
     }
 
     .logdump  {
@@ -27,11 +30,33 @@
     }
 
     .controls {
+      margin-top:-4em;
       float:right;
+    }
+    .controls textarea {
+      width:100%;
+      min-height:4em;
+    }
+    .export-controls {
+      width:100%;
+      margin-top:-1em;
+      margin-bottom:0.3em;
     }
 
     #submit {
       font-size:3em;
+    }
+    .header {
+      background:#e3e3e3;
+      text-transform:uppercase;
+    }
+    .header h2 {
+      margin:0;
+      padding:0.3em 0.7em;
+      font-weight:400;
+    }
+    h4 {
+      font-size:18pt;
     }
   </style>
 
@@ -42,36 +67,44 @@
 </head>
 <body>
 
+  <h1>Hub and Spoke</h1>
   <section class="main">
-    <h1>Hub and Spoke</h1>
-    <p>Find Nim Value</p>
+    <div class="header"><h2>Find Nim Value</h2></div>
+    <div class="body">
+      Label Value: <input id="labelvalue" value = "0"></input><br>
+      <p>Note: For labels:
+        <ul>
+          <li>Click "Edit - Labels" to switch modes</li>
+          <li>Input your desired value into the input box</li>
+          <li>Click on a node to set that node's value to whatever is currently in the box</li>
+        </ul>
+        
+      <canvas width="600" height="400" id="canvas"></canvas>
+      <div class="controls">
 
-    Label Value: <input id="labelvalue" value = "0"></input><br>
-    <p>Note: For labels:
-      <ul>
-        <li>Click "Edit - Labels" to switch modes</li>
-        <li>Input your desired value into the input box</li>
-        <li>Click on a node to set that node's value to whatever is currently in the box</li>
-      </ul>
-      
-    <canvas width="600" height="400" id="canvas"></canvas>
-    <div class="controls">
+        <h4>Add something</h4>
+        <button id="0" onclick="setMode(ADD_NODES);" class="selected" >Nodes</button>
+        <button id="1" onclick="setMode(ADD_EDGES);">Edges</button>
 
-      <h4>Add something</h4>
-      <button id="0" onclick="setMode(ADD_NODES);" class="selected" >Nodes</button>
-      <button id="1" onclick="setMode(ADD_EDGES);">Edges</button>
+        <h4>Edit something</h4>
+        <button id="2" onclick="setMode(EDIT_NODES);">Nodes</button>
+        <button id="3" onclick="setMode(EDIT_EDGES);">Edges</button>
+        <button id="7" onclick="setMode(EDIT_LABEL);">Label</button>
 
-      <h4>Edit something</h4>
-      <button id="2" onclick="setMode(EDIT_NODES);">Nodes</button>
-      <button id="3" onclick="setMode(EDIT_EDGES);">Edges</button>
-      <button id="7" onclick="setMode(EDIT_LABEL);">Label</button>
+        <h4>Remove Something</h4>
+        <button id="4" onclick="setMode(REMOVE_NODES);">Nodes</button>
+        <button id="5" onclick="setMode(REMOVE_EDGES);">Edges</button>
 
-      <h4>Remove Something</h4>
-      <button id="4" onclick="setMode(REMOVE_NODES);">Nodes</button>
-      <button id="5" onclick="setMode(REMOVE_EDGES);">Edges</button>
-    </div>
-    <div>
-      <button onclick="submit()" id="submit">Submit</button>
+        <h4>Export Graph to LaTeX</h4>
+        <div class="export-controls">
+        Scale: <input type="text" id="scale" value="0.01" />
+        <button id="export-button">Export</button>
+        </div>
+        <textarea id="latex-src"></textarea>
+      </div>
+      <div>
+        <button onclick="submit()" id="submit">Submit</button>
+      </div>
     </div>
     <h3>Output</h3>
     <div class="logdump">
@@ -80,401 +113,376 @@
 
   <script type="text/javascript">
   var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
-ctx.font = "20px Arial";
+  var ctx = canvas.getContext("2d");
+  ctx.font = "20px Arial";
 
 
-function init() {
-  window.requestAnimationFrame(draw);
-}
-function draw() {
-  // for(var i=0; i<nodes.length; i++) {
-  //  nodes[i][1]--;
-  // }
-
-
-  reDraw();
-  window.setTimeout(window.requestAnimationFrame(draw), 1000 / 60);
-}
-
-//properties
-var radius=10;
-var margin=5;
-
-const ADD_NODES=0;
-const ADD_EDGES=1;
-const EDIT_NODES=2;
-const EDIT_EDGES=3;
-const REMOVE_NODES=4;
-const REMOVE_EDGES=5;
-const EDIT_LABEL=7;
-const ADD_PATH=9;
-const NULL_EDGE=[[-100,-100],[-100,-100]];
-var mode=0;
-
-//general functions
-function sq(a) {
-  return a*a;
-}
-function inside(point1,point2) { //point1 is inside point2
-  return ((sq(point1[0]-point2[0])+sq(point1[1]-point2[1])) <= sq(radius));
-}
-function insideRadius(point1,point2, edgeradius) { //point1 is inside point2
-  return ((sq(point1[0]-point2[0])+sq(point1[1]-point2[1])) <= sq(edgeradius));
-}
-function insideEdge(point, edge) {
-  //calculate upper/lower bounds
-      var nodea = getNodeByName(edge[0]); //type=node (not edge)
-    var nodeb = getNodeByName(edge[1]);
-    //ensure a is to the left of b
-    if(nodea[1] > nodeb[1]) {var buffer = nodea; nodea = nodeb; nodeb = buffer;} 
-    var delx = nodeb[1]-nodea[1];
-    var dely = nodeb[2]-nodea[2];
-    var x1 = nodea[1];
-    var y1 = nodea[2];
-    //y-y1 = m(x-x1) -> y = mx + (y1 - mx1)
-    var slope = dely/delx;//m = del y / del x
-    var intercept = y1 - (slope * x1);//b = y1- mx1
-    var yatx = slope*point[0]+intercept;
-    //find the point (x,y) on the line, see if the click is within a (margin) radius
-
-    //at a given x:
-    //y at x - margin < given y < y at x + margin
-    return insideRadius(point,[point[0],yatx],margin);
-}
-function setMode(newmode) {
-  mode=newmode;
-  $("button").removeClass("selected");
-  $("#"+mode).addClass("selected");
-  // alert(mode);
-}
-function getNodeByName(name) {
-  for(var i=0; i<nodes.length; i++) {
-    if(nodes[i][0]==name) {
-      return nodes[i];
-    }
+  function init() {
+    window.requestAnimationFrame(draw);
   }
-}
-function indexOfNode(name) {
-  for(var i=0; i<nodes.length; i++) {
-    if(nodes[i][0]==name) {
-      return i;
-    }
-  }
-}
+  function draw() {
+    // for(var i=0; i<nodes.length; i++) {
+    //  nodes[i][1]--;
+    // }
 
-//drawing functions
-function drawNode(x,y,i) {
-  ctx.beginPath();
-  ctx.fillStyle="#000000";
-  ctx.arc(x, y, radius, 0, 2*Math.PI);
-  ctx.fill();
-  ctx.fillStyle="#FF0000";
-  ctx.fillText(""+nodes[i][3],x, y);
 
-}
-function drawActiveNode(x,y) {
-  ctx.beginPath();
-  ctx.fillStyle="#FF0000";
-  ctx.arc(x, y, radius, 0, 2*Math.PI);
-  ctx.fill();
-}
-function reDraw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for(var i=0; i<edges.length; i++) {
-    if(i==hoveredge) {
-      drawActiveEdge(getNodeByName(edges[i][0]),getNodeByName(edges[i][1]));
-    } else {
-      drawEdge(getNodeByName(edges[i][0]),getNodeByName(edges[i][1]));
-    }
-    // drawEdge(getNodeByName(edges[i][0]),getNodeByName(edges[i][1]));
-  }
-  for(var i=0; i<nodes.length; i++) {
-    if(i==hovernode) {
-      drawActiveNode(nodes[i][1],nodes[i][2]);
-    } else {
-      drawNode(nodes[i][1],nodes[i][2], i);
-    }
-  }
-  //draw active edge
-  drawLine(currentedge[0],currentedge[1]);
-}
-function drawLine(start, end) { //b/t two points [x,y]
-  ctx.beginPath();
-  ctx.strokeStyle="#000000";
-  ctx.moveTo(start[0],start[1]);
-  ctx.lineTo(end[0],end[1]);
-  ctx.stroke();
-}
-function drawEdge(start, end) { //b/t two nodes [name,x,y]
-  ctx.beginPath();
-  ctx.strokeStyle="#000000";
-  ctx.moveTo(start[1],start[2]);
-  ctx.lineTo(end[1],end[2]);
-  ctx.stroke();
-}
-function drawActiveEdge(start, end) { //b/t two nodes [name,x,y]
-  ctx.beginPath();
-  ctx.strokeStyle="#FF0000";
-  ctx.moveTo(start[1],start[2]);
-  ctx.lineTo(end[1],end[2]);
-  ctx.stroke();
-}
-
-//update functions
-canvas.addEventListener('mousedown', doMouseDown, false);
-function doMouseDown(event) {
-    var x = event.pageX - $('#canvas').offset().left;
-    var y = event.pageY - $('#canvas').offset().top;
-    if(mode==ADD_NODES) {
-      addNode(x,y);
-    } else if(mode==ADD_EDGES) {
-      addEdge(x,y);
-    } else if(mode==EDIT_NODES) {
-      editNode(x,y);
-    } else if(mode==EDIT_EDGES) {
-      editEdge(x,y);
-    } else if(mode==REMOVE_NODES) {
-      removeNode(x,y);
-    } else if(mode==REMOVE_EDGES) {
-      removeEdge(x,y);
-    } else if(mode ==EDIT_LABEL) {
-      editLabel(x, y);
-    }
-
+    reDraw();
+    window.setTimeout(window.requestAnimationFrame(draw), 1000 / 60);
   }
 
-  canvas.addEventListener('mousemove', doMouseMove, false);
-  function doMouseMove(event) {
-  var x = event.pageX - $('#canvas').offset().left;
-  var y = event.pageY - $('#canvas').offset().top;
-    //update active functions
-  if(activenode) {
-    var index=indexOfNode(currentnode);
-    // console.log(currentnode[0]);
-    nodes[index][1] = x;
-    nodes[index][2] = y;
-  }
+  //properties
+  var radius=10;
+  var margin=5;
 
-  /////this is where the issue is
-  if(activeaddedge) {
-    currentedge=[[startnode[1],startnode[2]],[x,y]];
-  }
+  const ADD_NODES=0;
+  const ADD_EDGES=1;
+  const EDIT_NODES=2;
+  const EDIT_EDGES=3;
+  const REMOVE_NODES=4;
+  const REMOVE_EDGES=5;
+  const EDIT_LABEL=7;
+  const ADD_PATH=9;
+  const NULL_EDGE=[[-100,-100],[-100,-100]];
+  var mode=0;
 
-  //pop out while hovering
-  var flag=false;
-  for(var i=0; i<nodes.length; i++) {
-    if(inside([x,y],[nodes[i][1],nodes[i][2]])) {
-      hovernode=i;
-      flag=true;
-      break;
-    }
+  //general functions
+  function sq(a) {
+    return a*a;
   }
-  if(!flag) {
-    hovernode=-1;
+  function inside(point1,point2) { //point1 is inside point2
+    return ((sq(point1[0]-point2[0])+sq(point1[1]-point2[1])) <= sq(radius));
   }
-  //pop edge out for hovering
-  flag = false;
-  for(var i=0; i<edges.length; i++) {
-    if(insideEdge([x,y],edges[i])) {
-      hoveredge=i;
-      flag=true
-      break;
-    }
+  function insideRadius(point1,point2, edgeradius) { //point1 is inside point2
+    return ((sq(point1[0]-point2[0])+sq(point1[1]-point2[1])) <= sq(edgeradius));
   }
-  if(!flag) {
-    hoveredge=-1;
-  }
-  
-  }
-  var hovernode = -1;
-  var hoveredge= -1;
+  function insideEdge(point, edge) {
+    //calculate upper/lower bounds
+        var nodea = getNodeByName(edge[0]); //type=node (not edge)
+      var nodeb = getNodeByName(edge[1]);
+      //ensure a is to the left of b
+      if(nodea[1] > nodeb[1]) {var buffer = nodea; nodea = nodeb; nodeb = buffer;} 
+      var delx = nodeb[1]-nodea[1];
+      var dely = nodeb[2]-nodea[2];
+      var x1 = nodea[1];
+      var y1 = nodea[2];
+      //y-y1 = m(x-x1) -> y = mx + (y1 - mx1)
+      var slope = dely/delx;//m = del y / del x
+      var intercept = y1 - (slope * x1);//b = y1- mx1
+      var yatx = slope*point[0]+intercept;
+      //find the point (x,y) on the line, see if the click is within a (margin) radius
 
-  //label stuff
-  function addLabel(x,y) {
-
+      //at a given x:
+      //y at x - margin < given y < y at x + margin
+      return insideRadius(point,[point[0],yatx],margin);
   }
-
-  //edge stuff
-  var edges=[]; //[start node (by name), end node (by name)]
-  var activeaddedge=false;
-  var startnode=[];
-  var currentedge=NULL_EDGE;
-  function addEdge(x,y) {
-    console.log("adding edge");
+  function setMode(newmode) {
+    mode=newmode;
+    $("button").removeClass("selected");
+    $("#"+mode).addClass("selected");
+    // alert(mode);
+  }
+  function getNodeByName(name) {
     for(var i=0; i<nodes.length; i++) {
-    if(inside([x,y],[nodes[i][1],nodes[i][2]])) {
-      console.log("inside "+i);
-      if(!activeaddedge) {
-        activeaddedge=true;
-        startnode=nodes[i];
-        break;
-      } else if(activeaddedge) {
-        if(startnode!=currentedge[0]) {
-          edges.push([startnode[0],nodes[i][0]]);
-        }
-        currentedge=NULL_EDGE;
-        activeaddedge=false;
+      if(nodes[i][0]==name) {
+        return nodes[i];
       }
     }
-    } 
+  }
+  function indexOfNode(name) {
+    for(var i=0; i<nodes.length; i++) {
+      if(nodes[i][0]==name) {
+        return i;
+      }
+    }
   }
 
-  
-  //editing the end of the edge seems to work, but the start doesn't
-  var activeeditedge=false;
-  function editEdge(x,y) {
-    var x = event.pageX - $('#canvas').offset().left;
-    var y = event.pageY - $('#canvas').offset().top;
+  //drawing functions
+  function drawNode(x,y,i) {
+    ctx.beginPath();
+    ctx.fillStyle="#000000";
+    ctx.arc(x, y, radius, 0, 2*Math.PI);
+    ctx.fill();
+    ctx.fillStyle="#FF0000";
+    ctx.fillText(""+nodes[i][3],x, y);
 
-    if(!activeeditedge) {
+  }
+  function drawActiveNode(x,y) {
+    ctx.beginPath();
+    ctx.fillStyle="#FF0000";
+    ctx.arc(x, y, radius, 0, 2*Math.PI);
+    ctx.fill();
+  }
+  function reDraw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     for(var i=0; i<edges.length; i++) {
+      if(i==hoveredge) {
+        drawActiveEdge(getNodeByName(edges[i][0]),getNodeByName(edges[i][1]));
+      } else {
+        drawEdge(getNodeByName(edges[i][0]),getNodeByName(edges[i][1]));
+      }
+      // drawEdge(getNodeByName(edges[i][0]),getNodeByName(edges[i][1]));
+    }
+    for(var i=0; i<nodes.length; i++) {
+      if(i==hovernode) {
+        drawActiveNode(nodes[i][1],nodes[i][2]);
+      } else {
+        drawNode(nodes[i][1],nodes[i][2], i);
+      }
+    }
+    //draw active edge
+    drawLine(currentedge[0],currentedge[1]);
+  }
+  function drawLine(start, end) { //b/t two points [x,y]
+    ctx.beginPath();
+    ctx.strokeStyle="#000000";
+    ctx.moveTo(start[0],start[1]);
+    ctx.lineTo(end[0],end[1]);
+    ctx.stroke();
+  }
+  function drawEdge(start, end) { //b/t two nodes [name,x,y]
+    ctx.beginPath();
+    ctx.strokeStyle="#000000";
+    ctx.moveTo(start[1],start[2]);
+    ctx.lineTo(end[1],end[2]);
+    ctx.stroke();
+  }
+  function drawActiveEdge(start, end) { //b/t two nodes [name,x,y]
+    ctx.beginPath();
+    ctx.strokeStyle="#FF0000";
+    ctx.moveTo(start[1],start[2]);
+    ctx.lineTo(end[1],end[2]);
+    ctx.stroke();
+  }
 
-      var nodea = getNodeByName(edges[i][0]); //type=node (not edge)
-      var nodeb = getNodeByName(edges[i][1]);
-      //shift along change, normalize by r
-      var delta = [(nodeb[1]-nodea[1])/radius,(nodeb[2]-nodea[2])/radius] 
-      var edgestart=[nodea[1]+delta[0],nodea[2]+delta[1]];
-      var edgeend=[nodeb[1]-delta[0],nodeb[2]-delta[1]];
-      
-      //compress this section to be shorter
-      if(inside([x,y],edgestart)) { //chose the start node
-        currentedge=[[nodeb[1],nodeb[2]],[x,y]]; 
-        startnode=getNodeByName(nodeb[0]);
-        activeaddedge=true;
-        edges.splice(indexOfNode(i),1);
-        activeeditedge=true;
-        break;
-      } 
-      if(inside([x,y],edgeend)) { //chose the end node
-        currentedge=[[nodea[1],nodea[2]],[x,y]];
-        startnode=getNodeByName(nodea[0]);
-        activeaddedge=true;
-        edges.splice(indexOfNode(i),1);
-        activeeditedge=true;
-        break;
+  //update functions
+  canvas.addEventListener('mousedown', doMouseDown, false);
+  function doMouseDown(event) {
+      var x = event.pageX - $('#canvas').offset().left;
+      var y = event.pageY - $('#canvas').offset().top;
+      if(mode==ADD_NODES) {
+        addNode(x,y);
+      } else if(mode==ADD_EDGES) {
+        addEdge(x,y);
+      } else if(mode==EDIT_NODES) {
+        editNode(x,y);
+      } else if(mode==EDIT_EDGES) {
+        editEdge(x,y);
+      } else if(mode==REMOVE_NODES) {
+        removeNode(x,y);
+      } else if(mode==REMOVE_EDGES) {
+        removeEdge(x,y);
+      } else if(mode ==EDIT_LABEL) {
+        editLabel(x, y);
       }
 
     }
+
+    canvas.addEventListener('mousemove', doMouseMove, false);
+    function doMouseMove(event) {
+    var x = event.pageX - $('#canvas').offset().left;
+    var y = event.pageY - $('#canvas').offset().top;
+      //update active functions
+    if(activenode) {
+      var index=indexOfNode(currentnode);
+      // console.log(currentnode[0]);
+      nodes[index][1] = x;
+      nodes[index][2] = y;
     }
-    if(activeeditedge) {
+
+    /////this is where the issue is
+    if(activeaddedge) {
+      currentedge=[[startnode[1],startnode[2]],[x,y]];
+    }
+
+    //pop out while hovering
+    var flag=false;
+    for(var i=0; i<nodes.length; i++) {
+      if(inside([x,y],[nodes[i][1],nodes[i][2]])) {
+        hovernode=i;
+        flag=true;
+        break;
+      }
+    }
+    if(!flag) {
+      hovernode=-1;
+    }
+    //pop edge out for hovering
+    flag = false;
+    for(var i=0; i<edges.length; i++) {
+      if(insideEdge([x,y],edges[i])) {
+        hoveredge=i;
+        flag=true
+        break;
+      }
+    }
+    if(!flag) {
+      hoveredge=-1;
+    }
+    
+    }
+    var hovernode = -1;
+    var hoveredge= -1;
+
+    //label stuff
+    function addLabel(x,y) {
+
+    }
+
+    //edge stuff
+    var edges=[]; //[start node (by name), end node (by name)]
+    var activeaddedge=false;
+    var startnode=[];
+    var currentedge=NULL_EDGE;
+    function addEdge(x,y) {
+      console.log("adding edge");
       for(var i=0; i<nodes.length; i++) {
-        if(inside([x,y], [nodes[i][1],nodes[i][2]])) {
-          edges.push([startnode[0],nodes[i][0]]);
-          activeaddedge=false;
-          activeeditedge=false;
+      if(inside([x,y],[nodes[i][1],nodes[i][2]])) {
+        console.log("inside "+i);
+        if(!activeaddedge) {
+          activeaddedge=true;
+          startnode=nodes[i];
+          break;
+        } else if(activeaddedge) {
+          if(startnode!=currentedge[0]) {
+            edges.push([startnode[0],nodes[i][0]]);
+          }
           currentedge=NULL_EDGE;
+          activeaddedge=false;
+        }
+      }
+      } 
+    }
+
+    
+    //editing the end of the edge seems to work, but the start doesn't
+    var activeeditedge=false;
+    function editEdge(x,y) {
+      var x = event.pageX - $('#canvas').offset().left;
+      var y = event.pageY - $('#canvas').offset().top;
+
+      if(!activeeditedge) {
+      for(var i=0; i<edges.length; i++) {
+
+        var nodea = getNodeByName(edges[i][0]); //type=node (not edge)
+        var nodeb = getNodeByName(edges[i][1]);
+        //shift along change, normalize by r
+        var delta = [(nodeb[1]-nodea[1])/radius,(nodeb[2]-nodea[2])/radius] 
+        var edgestart=[nodea[1]+delta[0],nodea[2]+delta[1]];
+        var edgeend=[nodeb[1]-delta[0],nodeb[2]-delta[1]];
+        
+        //compress this section to be shorter
+        if(inside([x,y],edgestart)) { //chose the start node
+          currentedge=[[nodeb[1],nodeb[2]],[x,y]]; 
+          startnode=getNodeByName(nodeb[0]);
+          activeaddedge=true;
+          edges.splice(indexOfNode(i),1);
+          activeeditedge=true;
+          break;
+        } 
+        if(inside([x,y],edgeend)) { //chose the end node
+          currentedge=[[nodea[1],nodea[2]],[x,y]];
+          startnode=getNodeByName(nodea[0]);
+          activeaddedge=true;
+          edges.splice(indexOfNode(i),1);
+          activeeditedge=true;
+          break;
+        }
+
+      }
+      }
+      if(activeeditedge) {
+        for(var i=0; i<nodes.length; i++) {
+          if(inside([x,y], [nodes[i][1],nodes[i][2]])) {
+            edges.push([startnode[0],nodes[i][0]]);
+            activeaddedge=false;
+            activeeditedge=false;
+            currentedge=NULL_EDGE;
+            break;
+          }
+        }
+      }
+
+    }
+
+    function removeEdge(x,y) {
+      for(var i=0; i<edges.length; i++) {
+        //calculate upper/lower bounds
+        var nodea = getNodeByName(edges[i][0]); //type=node (not edge)
+      var nodeb = getNodeByName(edges[i][1]);
+      //ensure a is to the left of b
+      if(nodea[1] > nodeb[1]) {var buffer = nodea; nodea = nodeb; nodeb = buffer;} 
+      var delx = nodeb[1]-nodea[1];
+      var dely = nodeb[2]-nodea[2];
+      var x1 = nodea[1];
+      var y1 = nodea[2];
+      //y-y1 = m(x-x1) -> y = mx + (y1 - mx1)
+      var slope = dely/delx;//m = del y / del x
+      var intercept = y1 - (slope * x1);//b = y1- mx1
+      var yatx = slope*x+intercept;
+      //find the point (x,y) on the line, see if the click is within a (margin) radius
+
+      //at a given x:
+      //y at x - margin < given y < y at x + margin
+      // if(insideRadius([x,y],[x,yatx],margin)) {
+      if(insideEdge([x,y],edges[i])) {
+        edges.splice(i,1);
+      }
+      }
+
+    }
+
+    //node stuff
+    var nodes=[]; //[name, x coordinate, y coordinate, value]
+    var count=0;
+
+    function addNode(x,y) {
+      nodes.push([count,x,y, $("#labelvalue").val()]);
+      hovernode=count; //make the hover effect active before mousemove
+      count++;
+    }
+
+  function removeNode(x,y) {
+    for(var i=0; i<nodes.length; i++) {
+      if(inside([x,y],[nodes[i][1],nodes[i][2]])) {
+        for(var j=0; j<edges.length; j++) {
+          if(edges[j][0] == nodes[i][0] || edges[j][1] == nodes[i][0]) {
+            edges.splice(j,1);
+            j--;
+          }
+        }
+        nodes.splice(i,1);
+        break;
+      }
+    }
+  }
+  function editLabel(x, y) {
+    for(var i=0; i<nodes.length; i++) {
+      if(inside([x,y],[nodes[i][1],nodes[i][2]])) {
+        nodes[i][3]=$("#labelvalue").val()
+        break;
+      }
+    }
+  }
+
+  var activenode=false;
+  var currentnode=-1; //current node by name
+  function editNode(x,y) {
+    if(!activenode) {
+      for(var i=0; i<nodes.length; i++) {
+        if(inside([x,y],[nodes[i][1],nodes[i][2]])) {
+          activenode=true;
+          currentnode=nodes[i][0];
           break;
         }
       }
-    }
-
-  }
-
-  function removeEdge(x,y) {
-    for(var i=0; i<edges.length; i++) {
-      //calculate upper/lower bounds
-      var nodea = getNodeByName(edges[i][0]); //type=node (not edge)
-    var nodeb = getNodeByName(edges[i][1]);
-    //ensure a is to the left of b
-    if(nodea[1] > nodeb[1]) {var buffer = nodea; nodea = nodeb; nodeb = buffer;} 
-    var delx = nodeb[1]-nodea[1];
-    var dely = nodeb[2]-nodea[2];
-    var x1 = nodea[1];
-    var y1 = nodea[2];
-    //y-y1 = m(x-x1) -> y = mx + (y1 - mx1)
-    var slope = dely/delx;//m = del y / del x
-    var intercept = y1 - (slope * x1);//b = y1- mx1
-    var yatx = slope*x+intercept;
-    //find the point (x,y) on the line, see if the click is within a (margin) radius
-
-    //at a given x:
-    //y at x - margin < given y < y at x + margin
-    // if(insideRadius([x,y],[x,yatx],margin)) {
-    if(insideEdge([x,y],edges[i])) {
-      edges.splice(i,1);
-    }
-    }
-
-  }
-
-  //node stuff
-  var nodes=[]; //[name, x coordinate, y coordinate, value]
-  var count=0;
-
-  function addNode(x,y) {
-    nodes.push([count,x,y, $("#labelvalue").val()]);
-    hovernode=count; //make the hover effect active before mousemove
-    count++;
-  }
-
-function removeNode(x,y) {
-  for(var i=0; i<nodes.length; i++) {
-    if(inside([x,y],[nodes[i][1],nodes[i][2]])) {
-      for(var j=0; j<edges.length; j++) {
-        if(edges[j][0] == nodes[i][0] || edges[j][1] == nodes[i][0]) {
-          edges.splice(j,1);
-          j--;
-        }
-      }
-      nodes.splice(i,1);
-      break;
+    } else if(activenode) {
+      activenode=false;
+      currentnode=-1;
     }
   }
-}
-function editLabel(x, y) {
-  for(var i=0; i<nodes.length; i++) {
-    if(inside([x,y],[nodes[i][1],nodes[i][2]])) {
-      nodes[i][3]=$("#labelvalue").val()
-      break;
-    }
-  }
-}
-
-var activenode=false;
-var currentnode=-1; //current node by name
-function editNode(x,y) {
-  if(!activenode) {
-    for(var i=0; i<nodes.length; i++) {
-      if(inside([x,y],[nodes[i][1],nodes[i][2]])) {
-        activenode=true;
-        currentnode=nodes[i][0];
-        break;
-      }
-    }
-  } else if(activenode) {
-    activenode=false;
-    currentnode=-1;
-  }
-}
-
-//keep in mind that tikz coordinates are bottom-left (0,0) while canvas is top-left (0,0)
-
-function exportLatex() {
-  var str="\\begin{tikzpicture}[scale="+$('#scale').val()+"]\n";
-  for(var i=0; i<nodes.length; i++) {
-    var thisname=nodes[i][0];
-    var thisx=nodes[i][1];
-    var thisy=height-nodes[i][2];
-
-    // str=str.concat("\\node[shape=circle,draw=black] ("+thisname+") at ("+thisx+","+thisy+") {"+thisname+"};\n");
-    str=str.concat("\\node[shape=circle,draw=black] ("+thisname+") at ("+thisx+","+thisy+") {};\n");
-  }
-  for(var i=0; i<edges.length; i++) {
-    // var 
-    var thisstart=edges[i][0];
-    var thisend=edges[i][1];
-    str=str.concat("\\path ("+thisstart+") edge ("+thisend+");\n");
-    // \path (0) edge node[right] {$3$} (1);
-  }
-  str=str.concat("\\end{tikzpicture}");
-
-  $('#export').html(str);
-  
-}
 
 
-init();
+  init();
 
   </script>
 
@@ -526,6 +534,29 @@ init();
       $(".logdump").append("<p>"+gameinput+" has nim value "+data.result+"</p>");
     });
   }
+
+  $("#export-button").click(function() {
+    var str="\\begin{tikzpicture}[scale="+$('#scale').val()+"]\n";
+    for(var i=0; i<nodes.length; i++) {
+      var thisname=nodes[i][0];
+      var thisx=nodes[i][1];
+      var thisy=canvas.height-nodes[i][2];
+      var thislabel = nodes[i][3];
+
+      // str=str.concat("\\node[shape=circle,draw=black] ("+thisname+") at ("+thisx+","+thisy+") {"+thisname+"};\n");
+      str=str.concat(`\\node[shape=circle,draw=black] (${thisname}) at (${thisx},${thisy}) {${thislabel}};\n`);
+    }
+    for(var i=0; i<edges.length; i++) {
+      var thisstart=edges[i][0];
+      var thisend=edges[i][1];
+      str=str.concat("\\path ("+thisstart+") edge ("+thisend+");\n");
+      // \path (0) edge node[right] {$3$} (1);
+    }
+    str=str.concat("\\end{tikzpicture}");
+
+    $('#latex-src').text(str);
+    // $("#latex-src").text("hello");
+  })
   </script>
 
 </body>
