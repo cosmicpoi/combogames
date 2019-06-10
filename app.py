@@ -2,10 +2,10 @@ from flask import Flask, render_template, jsonify, request
 from comboGame import *
 MyApp = Flask(__name__)
 
-MyApp.config['MYSQL_DATABASE_USER'] = '***'
-MyApp.config['MYSQL_DATABASE_PASSWORD'] = '***'
-MyApp.config['MYSQL_DATABASE_DB'] = '***'
-MyApp.config['MYSQL_DATABASE_HOST'] = '***'
+MyApp.config['MYSQL_DATABASE_USER'] = 'combogames'
+MyApp.config['MYSQL_DATABASE_PASSWORD'] = 'GalesNim'
+MyApp.config['MYSQL_DATABASE_DB'] = 'combogames'
+MyApp.config['MYSQL_DATABASE_HOST'] = 'mysql.combinatoric.games'
 
 def arrayToString(anarray):
 	newstr = ""
@@ -20,9 +20,17 @@ def stringToArray(astring):
 def form():
 	return render_template('index.html')
 
+@MyApp.route("/test")
+def test():
+	return jsonify(value = request.args.get('number', 0, type=int))
+
 @MyApp.route("/index2")
 def form2():
 	return render_template('index2.html')
+
+@MyApp.route("/index3")
+def form_3():
+	return render_template('index3.html')
 
 @MyApp.route("/parser.js")
 def form3():
@@ -202,7 +210,24 @@ def gales_nim():
 	conn = mysql.connect()
 	cursor = conn.cursor()
 
-	game = GalesNim(stringToArray(request.args.get('game', 0, type=str)))
+	game = GalesNim(stringToArray(request.args.get('game', 0, type=str)), 1)
+	game.setConns(cursor, conn) #this is the faulty line
+
+	thenimvalue = game.getNimValue()
+
+	conn.close()
+	cursor.close()
+	return jsonify(result = thenimvalue)
+
+@MyApp.route('/_gales_nim2') #this is the nim form
+def gales_nim2():
+	mysql = MySQL()
+
+	mysql.init_app(MyApp)
+	conn = mysql.connect()
+	cursor = conn.cursor()
+
+	game = GalesNim(stringToArray(request.args.get('game', 0, type=str)), 2)
 	game.setConns(cursor, conn) #this is the faulty line
 
 	thenimvalue = game.getNimValue()

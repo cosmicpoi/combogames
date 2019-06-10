@@ -773,3 +773,860 @@ App 7018 stderr: OperationalError: (2003, "Can't connect to MySQL server on 'mys
 [ 2017-06-09 17:37:19.8960 7003/0x7fffebdfe3c0 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
 [ 2017-06-09 17:37:19.8960 7001/0x7fffebdfe3c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 7018, application /Users/alan/sites/combogames/public (development)
 [ 2017-06-09 17:37:20.0297 7001/0x7fffebdfe3c0 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-10-28 21:07:35.3531 50538/0x7fffe4ac33c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-10-28 21:07:35.3975 50540/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-10-28 21:07:35.3992 50540/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-10-28 21:07:35.4206 50540/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 50540
+[ 2017-10-28 21:07:35.4600 50542/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-10-28 21:07:35.4648 50542/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 50542
+App 50554 stdout: 
+App 50554 stderr: [2017-10-28 21:07:53,105] ERROR in app: Exception on /_check_val [GET]
+App 50554 stderr: Traceback (most recent call last):
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50554 stderr:     response = self.full_dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50554 stderr:     rv = self.handle_user_exception(e)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50554 stderr:     reraise(exc_type, exc_value, tb)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50554 stderr:     rv = self.dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50554 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50554 stderr:   File "/Users/alan/Sites/combogames/app.py", line 154, in check_val
+App 50554 stderr:     conn = mysql.connect()
+App 50554 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 50554 stderr:     return pymysql.connect(**self.connect_args)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50554 stderr:     return Connection(*args, **kwargs)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50554 stderr:     self.connect()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50554 stderr:     self._request_authentication()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50554 stderr:     auth_packet = self._read_packet()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50554 stderr:     packet.check_error()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50554 stderr:     err.raise_mysql_exception(self._data)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50554 stderr:     raise errorclass(errno, errval)
+App 50554 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+App 50554 stderr: [2017-10-28 21:07:53,343] ERROR in app: Exception on /_check_val [GET]
+App 50554 stderr: Traceback (most recent call last):
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50554 stderr:     response = self.full_dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50554 stderr:     rv = self.handle_user_exception(e)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50554 stderr:     reraise(exc_type, exc_value, tb)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50554 stderr:     rv = self.dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50554 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50554 stderr:   File "/Users/alan/Sites/combogames/app.py", line 154, in check_val
+App 50554 stderr:     conn = mysql.connect()
+App 50554 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 50554 stderr:     return pymysql.connect(**self.connect_args)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50554 stderr:     return Connection(*args, **kwargs)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50554 stderr:     self.connect()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50554 stderr:     self._request_authentication()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50554 stderr:     auth_packet = self._read_packet()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50554 stderr:     packet.check_error()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50554 stderr:     err.raise_mysql_exception(self._data)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50554 stderr:     raise errorclass(errno, errval)
+App 50554 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+App 50554 stderr: [2017-10-28 21:07:53,566] ERROR in app: Exception on /_check_val [GET]
+App 50554 stderr: Traceback (most recent call last):
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50554 stderr:     response = self.full_dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50554 stderr:     rv = self.handle_user_exception(e)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50554 stderr:     reraise(exc_type, exc_value, tb)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50554 stderr:     rv = self.dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50554 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50554 stderr:   File "/Users/alan/Sites/combogames/app.py", line 154, in check_val
+App 50554 stderr:     conn = mysql.connect()
+App 50554 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 50554 stderr:     return pymysql.connect(**self.connect_args)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50554 stderr:     return Connection(*args, **kwargs)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50554 stderr:     self.connect()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50554 stderr:     self._request_authentication()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50554 stderr:     auth_packet = self._read_packet()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50554 stderr:     packet.check_error()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50554 stderr:     err.raise_mysql_exception(self._data)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50554 stderr:     raise errorclass(errno, errval)
+App 50554 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+App 50554 stderr: [2017-10-28 21:07:53,783] ERROR in app: Exception on /_check_val [GET]
+App 50554 stderr: Traceback (most recent call last):
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50554 stderr:     response = self.full_dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50554 stderr:     rv = self.handle_user_exception(e)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50554 stderr:     reraise(exc_type, exc_value, tb)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50554 stderr:     rv = self.dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50554 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50554 stderr:   File "/Users/alan/Sites/combogames/app.py", line 154, in check_val
+App 50554 stderr:     conn = mysql.connect()
+App 50554 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 50554 stderr:     return pymysql.connect(**self.connect_args)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50554 stderr:     return Connection(*args, **kwargs)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50554 stderr:     self.connect()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50554 stderr:     self._request_authentication()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50554 stderr:     auth_packet = self._read_packet()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50554 stderr:     packet.check_error()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50554 stderr:     err.raise_mysql_exception(self._data)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50554 stderr:     raise errorclass(errno, errval)
+App 50554 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+App 50554 stderr: [2017-10-28 21:07:54,010] ERROR in app: Exception on /_check_val [GET]
+App 50554 stderr: Traceback (most recent call last):
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50554 stderr:     response = self.full_dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50554 stderr:     rv = self.handle_user_exception(e)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50554 stderr:     reraise(exc_type, exc_value, tb)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50554 stderr:     rv = self.dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50554 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50554 stderr:   File "/Users/alan/Sites/combogames/app.py", line 154, in check_val
+App 50554 stderr:     conn = mysql.connect()
+App 50554 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 50554 stderr:     return pymysql.connect(**self.connect_args)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50554 stderr:     return Connection(*args, **kwargs)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50554 stderr:     self.connect()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50554 stderr:     self._request_authentication()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50554 stderr:     auth_packet = self._read_packet()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50554 stderr:     packet.check_error()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50554 stderr:     err.raise_mysql_exception(self._data)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50554 stderr:     raise errorclass(errno, errval)
+App 50554 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+App 50554 stderr: [2017-10-28 21:07:54,230] ERROR in app: Exception on /_check_val [GET]
+App 50554 stderr: Traceback (most recent call last):
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50554 stderr:     response = self.full_dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50554 stderr:     rv = self.handle_user_exception(e)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50554 stderr:     reraise(exc_type, exc_value, tb)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50554 stderr:     rv = self.dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50554 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50554 stderr:   File "/Users/alan/Sites/combogames/app.py", line 154, in check_val
+App 50554 stderr:     conn = mysql.connect()
+App 50554 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 50554 stderr:     return pymysql.connect(**self.connect_args)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50554 stderr:     return Connection(*args, **kwargs)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50554 stderr:     self.connect()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50554 stderr:     self._request_authentication()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50554 stderr:     auth_packet = self._read_packet()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50554 stderr:     packet.check_error()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50554 stderr:     err.raise_mysql_exception(self._data)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50554 stderr:     raise errorclass(errno, errval)
+App 50554 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+App 50554 stderr: [2017-10-28 21:07:54,446] ERROR in app: Exception on /_check_val [GET]
+App 50554 stderr: Traceback (most recent call last):
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50554 stderr:     response = self.full_dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50554 stderr:     rv = self.handle_user_exception(e)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50554 stderr:     reraise(exc_type, exc_value, tb)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50554 stderr:     rv = self.dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50554 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50554 stderr:   File "/Users/alan/Sites/combogames/app.py", line 154, in check_val
+App 50554 stderr:     conn = mysql.connect()
+App 50554 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 50554 stderr:     return pymysql.connect(**self.connect_args)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50554 stderr:     return Connection(*args, **kwargs)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50554 stderr:     self.connect()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50554 stderr:     self._request_authentication()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50554 stderr:     auth_packet = self._read_packet()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50554 stderr:     packet.check_error()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50554 stderr:     err.raise_mysql_exception(self._data)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50554 stderr:     raise errorclass(errno, errval)
+App 50554 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+App 50554 stderr: [2017-10-28 21:07:54,680] ERROR in app: Exception on /_check_val [GET]
+App 50554 stderr: Traceback (most recent call last):
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50554 stderr:     response = self.full_dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50554 stderr:     rv = self.handle_user_exception(e)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50554 stderr:     reraise(exc_type, exc_value, tb)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50554 stderr:     rv = self.dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50554 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50554 stderr:   File "/Users/alan/Sites/combogames/app.py", line 154, in check_val
+App 50554 stderr:     conn = mysql.connect()
+App 50554 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 
+App 50554 stderr: 53, in connect
+App 50554 stderr:     return pymysql.connect(**self.connect_args)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50554 stderr:     return Connection(*args, **kwargs)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50554 stderr:     self.connect()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50554 stderr:     self._request_authentication()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50554 stderr:     auth_packet = self._read_packet()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50554 stderr:     packet.check_error()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50554 stderr:     err.raise_mysql_exception(self._data)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50554 stderr:     raise errorclass(errno, errval)
+App 50554 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+App 50554 stderr: [2017-10-28 21:07:54,908] ERROR in app: Exception on /_check_val [GET]
+App 50554 stderr: Traceback (most recent call last):
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50554 stderr:     response = self.full_dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50554 stderr:     rv = self.handle_user_exception(e)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50554 stderr:     reraise(exc_type, exc_value, tb)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50554 stderr:     rv = self.dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50554 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50554 stderr:   File "/Users/alan/Sites/combogames/app.py", line 154, in check_val
+App 50554 stderr:     conn = mysql.connect()
+App 50554 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 50554 stderr:     return pymysql.connect(**self.connect_args)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50554 stderr:     return Connection(*args, **kwargs)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50554 stderr:     self.connect()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50554 stderr:     self._request_authentication()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50554 stderr:     auth_packet = self._read_packet()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50554 stderr:     packet.check_error()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50554 stderr:     err.raise_mysql_exception(self._data)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50554 stderr:     raise errorclass(errno, errval)
+App 50554 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+App 50554 stderr: [2017-10-28 21:07:55,131] ERROR in app: Exception on /_check_val [GET]
+App 50554 stderr: Traceback (most recent call last):
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50554 stderr:     response = self.full_dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50554 stderr:     rv = self.handle_user_exception(e)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50554 stderr:     reraise(exc_type, exc_value, tb)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50554 stderr:     rv = self.dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50554 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50554 stderr:   File "/Users/alan/Sites/combogames/app.py", line 154, in check_val
+App 50554 stderr:     conn = mysql.connect()
+App 50554 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 50554 stderr:     return pymysql.connect(**self.connect_args)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50554 stderr:     return Connection(*args, **kwargs)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50554 stderr:     self.connect()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50554 stderr:     self._request_authentication()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50554 stderr:     auth_packet = self._read_packet()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50554 stderr:     packet.check_error()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50554 stderr:     err.raise_mysql_exception(self._data)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50554 stderr:     raise errorclass(errno, errval)
+App 50554 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+App 50554 stderr: [2017-10-28 21:08:11,896] ERROR in app: Exception on /_gales_nim [GET]
+App 50554 stderr: Traceback (most recent call last):
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50554 stderr:     response = self.full_dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50554 stderr:     rv = self.handle_user_exception(e)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50554 stderr:     reraise(exc_type, exc_value, tb)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50554 stderr:     rv = self.dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50554 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50554 stderr:   File "/Users/alan/Sites/combogames/app.py", line 210, in gales_nim
+App 50554 stderr:     conn = mysql.connect()
+App 50554 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 50554 stderr:     return pymysql.connect(**self.connect_args)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50554 stderr:     return Connection(*args, **kwargs)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50554 stderr:     self.connect()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50554 stderr:     self._request_authentication()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50554 stderr:     auth_packet = self._read_packet()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50554 stderr:     packet.check_error()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50554 stderr:     err.raise_mysql_exception(self._data)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50554 stderr:     raise errorclass(errno, errval)
+App 50554 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+App 50554 stderr: [2017-10-28 21:08:21,332] ERROR in app: Exception on /_gales_nim [GET]
+App 50554 stderr: Traceback (most recent call last):
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50554 stderr:     response = self.full_dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50554 stderr:     rv = self.handle_user_exception(e)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50554 stderr:     reraise(exc_type, exc_value, tb)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50554 stderr:     rv = self.dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50554 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50554 stderr:   File "/Users/alan/Sites/combogames/app.py", line 210, in gales_nim
+App 50554 stderr:     conn = mysql.connect()
+App 50554 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 50554 stderr:     return pymysql.connect(**self.connect_args)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50554 stderr:     return Connection(*args, **kwargs)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50554 stderr:     self.connect()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50554 stderr:     self._request_authentication()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50554 stderr:     auth_packet = self._read_packet()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50554 stderr:     packet.check_error()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50554 stderr:     err.raise_mysql_exception(self._data)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50554 stderr:     raise errorclass(errno, errval)
+App 50554 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+App 50554 stderr: [2017-10-28 21:08:42,456] ERROR in app: Exception on /_gales_nim [GET]
+App 50554 stderr: Traceback (most recent call last):
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50554 stderr:     response = self.full_dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50554 stderr:     rv = self.handle_user_exception(e)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50554 stderr:     reraise(exc_type, exc_value, tb)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50554 stderr:     rv = self.dispatch_request()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50554 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50554 stderr:   File "/Users/alan/Sites/combogames/app.py", line 210, in gales_nim
+App 50554 stderr:     conn = mysql.connect()
+App 50554 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 50554 stderr:     return pymysql.connect(**self.connect_args)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50554 stderr:     return Connection(*args, **kwargs)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50554 stderr:     self.connect()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50554 stderr:     self._request_authentication()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50554 stderr:     auth_packet = self._read_packet()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50554 stderr:     packet.check_error()
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50554 stderr:     err.raise_mysql_exception(self._data)
+App 50554 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50554 stderr:     raise errorclass(errno, errval)
+App 50554 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+
+
+[ 2017-10-28 21:08:47.2888 50540/0x700009d05000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-28 21:08:47.2888 50542/0x70000b43f000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-28 21:08:47.2888 50540/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-28 21:08:47.2888 50542/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-28 21:08:47.2889 50540/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 50554, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:08:47.2891 50540/0x700009d05000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-10-28 21:08:47.2891 50542/0x70000b43f000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-10-28 21:08:47.2891 50540/0x700009d05000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-10-28 21:08:47.2891 50542/0x70000b545000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-10-28 21:08:47.2891 50542/0x70000b545000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-10-28 21:08:47.2892 50540/0x700009e0b000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-10-28 21:08:47.2892 50540/0x700009e0b000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-10-28 21:08:47.2893 50540/0x700009f11000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-10-28 21:08:47.2893 50540/0x700009f11000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-10-28 21:08:47.2895 50540/0x70000a017000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-10-28 21:08:47.2895 50540/0x70000a017000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-10-28 21:08:47.2896 50540/0x70000a11d000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-10-28 21:08:47.2896 50540/0x70000a11d000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-10-28 21:08:47.2897 50540/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 50554, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:08:47.2917 50542/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-10-28 21:08:47.4072 50540/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-10-28 21:08:48.4365 50616/0x7fffe4ac33c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-10-28 21:08:48.4716 50618/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-10-28 21:08:48.4750 50618/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-10-28 21:08:48.4942 50618/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 50618
+[ 2017-10-28 21:08:48.5104 50620/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-10-28 21:08:48.5123 50620/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 50620
+App 50632 stdout: 
+App 50632 stderr: [2017-10-28 21:08:53,076] ERROR in app: Exception on /_gales_nim [GET]
+App 50632 stderr: Traceback (most recent call last):
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50632 stderr:     response = self.full_dispatch_request()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50632 stderr:     rv = self.handle_user_exception(e)
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50632 stderr:     reraise(exc_type, exc_value, tb)
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50632 stderr:     rv = self.dispatch_request()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50632 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50632 stderr:   File "/Users/alan/Sites/combogames/app.py", line 210, in gales_nim
+App 50632 stderr:     conn = mysql.connect()
+App 50632 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 50632 stderr:     return pymysql.connect(**self.connect_args)
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50632 stderr:     return Connection(*args, **kwargs)
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50632 stderr:     self.connect()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50632 stderr:     self._request_authentication()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50632 stderr:     auth_packet = self._read_packet()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50632 stderr:     packet.check_error()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50632 stderr:     err.raise_mysql_exception(self._data)
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50632 stderr:     raise errorclass(errno, errval)
+App 50632 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+App 50632 stderr: [2017-10-28 21:10:06,282] ERROR in app: Exception on /_gales_nim [GET]
+App 50632 stderr: Traceback (most recent call last):
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50632 stderr:     response = self.full_dispatch_request()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50632 stderr:     rv = self.handle_user_exception(e)
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50632 stderr:     reraise(exc_type, exc_value, tb)
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50632 stderr:     rv = self.dispatch_request()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50632 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50632 stderr:   File "/Users/alan/Sites/combogames/app.py", line 210, in gales_nim
+App 50632 stderr:     conn = mysql.connect()
+App 50632 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 50632 stderr:     return pymysql.connect(**self.connect_args)
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50632 stderr:     return Connection(*args, **kwargs)
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50632 stderr:     self.connect()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50632 stderr:     self._request_authentication()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50632 stderr:     auth_packet = self._read_packet()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50632 stderr:     packet.check_error()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50632 stderr:     err.raise_mysql_exception(self._data)
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50632 stderr:     raise errorclass(errno, errval)
+App 50632 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+App 50632 stderr: [2017-10-28 21:10:12,451] ERROR in app: Exception on /_gales_nim [GET]
+App 50632 stderr: Traceback (most recent call last):
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+App 50632 stderr:     response = self.full_dispatch_request()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+App 50632 stderr:     rv = self.handle_user_exception(e)
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+App 50632 stderr:     reraise(exc_type, exc_value, tb)
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+App 50632 stderr:     rv = self.dispatch_request()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+App 50632 stderr:     return self.view_functions[rule.endpoint](**req.view_args)
+App 50632 stderr:   File "/Users/alan/Sites/combogames/app.py", line 210, in gales_nim
+App 50632 stderr:     conn = mysql.connect()
+App 50632 stderr:   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flaskext/mysql.py", line 53, in connect
+App 50632 stderr:     return pymysql.connect(**self.connect_args)
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/__init__.py", line 90, in Connect
+App 50632 stderr:     return Connection(*args, **kwargs)
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 706, in __init__
+App 50632 stderr:     self.connect()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 932, in connect
+App 50632 stderr:     self._request_authentication()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1152, in _request_authentication
+App 50632 stderr:     auth_packet = self._read_packet()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 1014, in _read_packet
+App 50632 stderr:     packet.check_error()
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/connections.py", line 393, in check_error
+App 50632 stderr:     err.raise_mysql_exception(self._data)
+App 50632 stderr:   File "/usr/local/lib/python2.7/site-packages/pymysql/err.py", line 107, in raise_mysql_exception
+App 50632 stderr:     raise errorclass(errno, errval)
+App 50632 stderr: OperationalError: (1045, u"Access denied for user 'combogames'@'192.83.228.246' (using password: YES)")
+
+[ 2017-10-28 21:10:14.8163 50618/0x700008918000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+
+[ 2017-10-28 21:10:14.8164 50618/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-28 21:10:14.8164 50620/0x700009395000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-28 21:10:14.8164 50618/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 50632, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:10:14.8165 50620/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-28 21:10:14.8166 50620/0x700009395000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-10-28 21:10:14.8167 50620/0x70000949b000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-10-28 21:10:14.8167 50620/0x70000949b000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-10-28 21:10:14.8167 50618/0x700008918000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-10-28 21:10:14.8168 50618/0x700008918000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-10-28 21:10:14.8168 50618/0x700008a1e000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-10-28 21:10:14.8170 50618/0x700008b24000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-10-28 21:10:14.8171 50618/0x700008c2a000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-10-28 21:10:14.8171 50618/0x700008a1e000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-10-28 21:10:14.8171 50618/0x700008b24000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-10-28 21:10:14.8171 50618/0x700008c2a000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-10-28 21:10:14.8172 50618/0x700008d30000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-10-28 21:10:14.8172 50618/0x700008d30000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-10-28 21:10:14.8173 50618/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 50632, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:10:14.8184 50620/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-10-28 21:10:14.9330 50618/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-10-28 21:10:15.8161 50696/0x7fffe4ac33c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-10-28 21:10:15.8594 50698/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-10-28 21:10:15.8608 50698/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-10-28 21:10:15.8747 50698/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 50698
+[ 2017-10-28 21:10:15.8827 50700/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-10-28 21:10:15.8845 50700/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 50700
+App 50714 stdout: 
+App 50725 stdout: 
+
+
+[ 2017-10-28 21:13:04.1021 50698/0x70000fcf4000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-28 21:13:04.1021 50700/0x700009041000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-28 21:13:04.1022 50700/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-28 21:13:04.1022 50698/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-28 21:13:04.1022 50698/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 50714, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:13:04.1022 50700/0x700009041000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-10-28 21:13:04.1023 50698/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 50725, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:13:04.1023 50700/0x700009147000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-10-28 21:13:04.1023 50700/0x700009147000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-10-28 21:13:04.1024 50698/0x70000fcf4000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-10-28 21:13:04.1024 50698/0x70000fdfa000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-10-28 21:13:04.1024 50698/0x70000fcf4000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-10-28 21:13:04.1025 50698/0x70000fdfa000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-10-28 21:13:04.1026 50698/0x70000ff00000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-10-28 21:13:04.1026 50698/0x700010006000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-10-28 21:13:04.1026 50698/0x700010006000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-10-28 21:13:04.1026 50698/0x70000ff00000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-10-28 21:13:04.1027 50698/0x70001010c000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-10-28 21:13:04.1027 50698/0x70001010c000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-10-28 21:13:04.1028 50698/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 50714, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:13:04.1028 50698/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 50725, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:13:04.1069 50700/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-10-28 21:13:04.2218 50698/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-10-28 21:15:36.0925 50877/0x7fffe4ac33c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-10-28 21:15:36.1320 50879/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-10-28 21:15:36.1346 50879/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-10-28 21:15:36.1411 50879/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 50879
+[ 2017-10-28 21:15:36.1494 50881/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-10-28 21:15:36.1513 50881/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 50881
+App 50892 stdout: 
+App 50904 stdout: 
+
+
+[ 2017-10-28 21:18:12.4711 50879/0x7000073f2000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-28 21:18:12.4711 50881/0x700002b5f000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-28 21:18:12.4712 50879/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-28 21:18:12.4712 50881/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-28 21:18:12.4712 50879/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 50892, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:18:12.4713 50881/0x700002c65000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-10-28 21:18:12.4713 50879/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 50904, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:18:12.4713 50881/0x700002c65000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-10-28 21:18:12.4713 50881/0x700002b5f000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-10-28 21:18:12.4715 50879/0x7000073f2000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-10-28 21:18:12.4716 50879/0x7000074f8000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-10-28 21:18:12.4716 50879/0x7000073f2000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-10-28 21:18:12.4716 50879/0x7000074f8000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-10-28 21:18:12.4718 50879/0x7000075fe000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-10-28 21:18:12.4719 50879/0x7000075fe000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-10-28 21:18:12.4719 50879/0x700007704000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-10-28 21:18:12.4719 50879/0x700007704000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-10-28 21:18:12.4719 50879/0x70000780a000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-10-28 21:18:12.4720 50879/0x70000780a000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-10-28 21:18:12.4721 50879/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 50892, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:18:12.4721 50879/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 50904, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:18:12.4729 50881/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-10-28 21:18:12.5881 50879/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-10-28 21:18:13.2275 51009/0x7fffe4ac33c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-10-28 21:18:13.2778 51011/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-10-28 21:18:13.2795 51011/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-10-28 21:18:13.2974 51011/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 51011
+[ 2017-10-28 21:18:13.3054 51013/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-10-28 21:18:13.3071 51013/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 51013
+App 51024 stdout: 
+
+
+[ 2017-10-28 21:29:45.0910 51013/0x7000026d4000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-28 21:29:45.0910 51013/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-28 21:29:45.0911 51013/0x7000026d4000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-10-28 21:29:45.0912 51011/0x700005794000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-28 21:29:45.0912 51013/0x7000027da000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-10-28 21:29:45.0912 51013/0x7000027da000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-10-28 21:29:45.0915 51011/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-28 21:29:45.0915 51011/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 51024, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:29:45.0918 51011/0x7000059a0000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-10-28 21:29:45.0918 51011/0x7000059a0000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-10-28 21:29:45.0919 51011/0x700005794000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-10-28 21:29:45.0919 51011/0x700005aa6000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-10-28 21:29:45.0919 51011/0x700005aa6000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-10-28 21:29:45.0919 51011/0x700005794000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-10-28 21:29:45.0920 51011/0x70000589a000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-10-28 21:29:45.0920 51011/0x70000589a000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-10-28 21:29:45.0920 51011/0x700005bac000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-10-28 21:29:45.0920 51011/0x700005bac000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-10-28 21:29:45.0921 51011/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 51024, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:29:45.0925 51013/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-10-28 21:29:45.2067 51011/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-10-28 21:29:45.7787 51414/0x7fffe4ac33c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-10-28 21:29:45.8036 51416/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-10-28 21:29:45.8050 51416/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-10-28 21:29:45.8113 51416/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 51416
+[ 2017-10-28 21:29:45.8198 51418/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-10-28 21:29:45.8218 51418/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 51418
+App 51430 stdout: 
+App 51442 stdout: 
+App 51463 stdout: 
+App 51474 stdout: 
+App 51430 stdout: 0
+App 51430 stdout: 
+App 51442 stdout: 1
+App 51463 stdout: 1
+App 51474 stdout: 1
+App 51474 stdout: 
+App 51430 stdout: 0
+
+
+[ 2017-10-28 21:30:17.8392 51418/0x70000267a000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-28 21:30:17.8392 51416/0x70000e1cd000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-28 21:30:17.8393 51418/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-28 21:30:17.8393 51416/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-28 21:30:17.8393 51416/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 51430, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:30:17.8393 51418/0x70000267a000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-10-28 21:30:17.8393 51416/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 51442, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:30:17.8394 51416/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 51463, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:30:17.8394 51418/0x700002780000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-10-28 21:30:17.8394 51416/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 51474, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:30:17.8394 51418/0x700002780000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-10-28 21:30:17.8396 51416/0x70000e2d3000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-10-28 21:30:17.8396 51416/0x70000e1cd000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-10-28 21:30:17.8397 51416/0x70000e2d3000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-10-28 21:30:17.8397 51416/0x70000e3d9000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-10-28 21:30:17.8398 51416/0x70000e4df000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-10-28 21:30:17.8398 51416/0x70000e1cd000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-10-28 21:30:17.8398 51416/0x70000e5e5000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-10-28 21:30:17.8398 51416/0x70000e3d9000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-10-28 21:30:17.8398 51416/0x70000e4df000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-10-28 21:30:17.8399 51416/0x70000e5e5000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-10-28 21:30:17.8399 51416/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 51430, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:30:17.8400 51416/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 51442, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:30:17.8400 51416/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 51463, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:30:17.8400 51416/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 51474, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:30:17.8404 51418/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-10-28 21:30:17.9607 51416/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-10-28 21:30:21.9099 51505/0x7fffe4ac33c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-10-28 21:30:21.9439 51507/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-10-28 21:30:21.9455 51507/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-10-28 21:30:21.9574 51507/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 51507
+[ 2017-10-28 21:30:21.9738 51509/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-10-28 21:30:21.9758 51509/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 51509
+App 51520 stdout: 
+App 51532 stdout: 
+App 51520 stdout: 0
+[ 2017-10-28 21:35:24.5724 51507/0x70000db07000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 51532, application /Users/alan/sites/combogames/public (development)
+
+[ 2017-10-28 21:58:22.8884 51507/0x70000dc0d000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-28 21:58:22.8884 51507/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-28 21:58:22.8885 51507/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 51520, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:58:22.8887 51507/0x70000dc0d000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+
+[ 2017-10-28 21:58:22.8890 51509/0x70000c939000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-28 21:58:22.8891 51509/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-28 21:58:22.8892 51509/0x70000c939000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-10-28 21:58:22.8893 51509/0x70000ca3f000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-10-28 21:58:22.8893 51509/0x70000ca3f000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-10-28 21:58:22.8900 51507/0x70000dd13000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-10-28 21:58:22.8900 51507/0x70000dd13000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-10-28 21:58:22.8901 51507/0x70000de19000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-10-28 21:58:22.8902 51507/0x70000de19000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-10-28 21:58:22.8902 51507/0x70000df1f000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-10-28 21:58:22.8903 51507/0x70000dc0d000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-10-28 21:58:22.8903 51507/0x70000df1f000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-10-28 21:58:22.8904 51507/0x70000e025000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-10-28 21:58:22.8904 51507/0x70000e025000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-10-28 21:58:22.8904 51507/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 51520, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-28 21:58:22.8915 51509/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-10-28 21:58:23.0084 51507/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-10-28 21:58:23.9463 52507/0x7fffe4ac33c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-10-28 21:58:23.9680 52509/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-10-28 21:58:23.9695 52509/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-10-28 21:58:23.9766 52509/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 52509
+[ 2017-10-28 21:58:23.9843 52511/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-10-28 21:58:23.9861 52511/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 52511
+App 52523 stdout: 
+App 52535 stdout: 
+[ 2017-10-28 22:03:28.8209 52509/0x7000078ad000 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 52535, application /Users/alan/sites/combogames/public (development)
+
+
+[ 2017-10-29 08:31:28.4310 52509/0x7000079b3000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-29 08:31:28.4310 52511/0x700008d4b000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-29 08:31:28.4315 52511/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-29 08:31:28.4315 52509/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-29 08:31:28.4316 52509/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 52523, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-29 08:31:28.4316 52511/0x700008d4b000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-10-29 08:31:28.4317 52511/0x700008e51000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-10-29 08:31:28.4317 52511/0x700008e51000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-10-29 08:31:28.4321 52509/0x700007ab9000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-10-29 08:31:28.4322 52509/0x700007bbf000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-10-29 08:31:28.4322 52509/0x700007ab9000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-10-29 08:31:28.4322 52509/0x700007bbf000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-10-29 08:31:28.4322 52509/0x7000079b3000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-10-29 08:31:28.4322 52509/0x7000079b3000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-10-29 08:31:28.4323 52509/0x700007dcb000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-10-29 08:31:28.4323 52509/0x700007dcb000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-10-29 08:31:28.4324 52509/0x700007cc5000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-10-29 08:31:28.4324 52509/0x700007cc5000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-10-29 08:31:28.4325 52509/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 52523, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-29 08:31:28.4329 52511/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-10-29 08:31:28.5526 52509/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-10-29 08:31:33.5263 60569/0x7fffe4ac33c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-10-29 08:31:33.5530 60571/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-10-29 08:31:33.5552 60571/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-10-29 08:31:33.5638 60571/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 60571
+[ 2017-10-29 08:31:33.5751 60573/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-10-29 08:31:33.5781 60573/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 60573
+App 60584 stdout: 
+App 60597 stdout: 
+
+
+[ 2017-10-29 08:32:24.6814 60573/0x700002f06000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-29 08:32:24.6814 60571/0x700008b12000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-29 08:32:24.6815 60573/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-29 08:32:24.6815 60573/0x70000300c000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-10-29 08:32:24.6815 60573/0x700002f06000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-10-29 08:32:24.6815 60571/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-29 08:32:24.6815 60573/0x70000300c000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-10-29 08:32:24.6816 60571/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 60584, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-29 08:32:24.6816 60571/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 60597, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-29 08:32:24.6818 60571/0x700008b12000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-10-29 08:32:24.6818 60571/0x700008b12000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-10-29 08:32:24.6818 60571/0x700008c18000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-10-29 08:32:24.6818 60571/0x700008c18000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-10-29 08:32:24.6819 60571/0x700008d1e000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-10-29 08:32:24.6819 60571/0x700008e24000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-10-29 08:32:24.6820 60571/0x700008e24000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-10-29 08:32:24.6819 60571/0x700008d1e000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-10-29 08:32:24.6820 60571/0x700008f2a000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-10-29 08:32:24.6820 60571/0x700008f2a000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-10-29 08:32:24.6821 60571/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 60584, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-29 08:32:24.6821 60571/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 60597, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-29 08:32:24.6832 60573/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-10-29 08:32:24.7996 60571/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-10-29 08:32:25.3232 60649/0x7fffe4ac33c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-10-29 08:32:25.3453 60651/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-10-29 08:32:25.3467 60651/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-10-29 08:32:25.3529 60651/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 60651
+[ 2017-10-29 08:32:25.3603 60653/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-10-29 08:32:25.3621 60653/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 60653
+App 60664 stdout: 
+
+
+[ 2017-10-29 08:32:41.1104 60651/0x7000009a1000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-29 08:32:41.1104 60653/0x70000817f000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-29 08:32:41.1105 60653/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-29 08:32:41.1105 60651/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-29 08:32:41.1105 60651/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 60664, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-29 08:32:41.1106 60653/0x700008285000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-10-29 08:32:41.1106 60653/0x700008285000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-10-29 08:32:41.1106 60653/0x70000817f000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-10-29 08:32:41.1109 60651/0x700000aa7000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-10-29 08:32:41.1109 60651/0x7000009a1000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-10-29 08:32:41.1109 60651/0x700000aa7000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-10-29 08:32:41.1110 60651/0x700000bad000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-10-29 08:32:41.1111 60651/0x7000009a1000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-10-29 08:32:41.1111 60651/0x700000cb3000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-10-29 08:32:41.1111 60651/0x700000bad000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-10-29 08:32:41.1112 60651/0x700000cb3000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-10-29 08:32:41.1112 60651/0x700000db9000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-10-29 08:32:41.1113 60651/0x700000db9000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-10-29 08:32:41.1113 60651/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 60664, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-29 08:32:41.1125 60653/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-10-29 08:32:41.2304 60651/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
+[ 2017-10-29 08:32:41.7092 60697/0x7fffe4ac33c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-10-29 08:32:41.7383 60699/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:982 ]: Starting Passenger core...
+[ 2017-10-29 08:32:41.7401 60699/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:235 ]: Passenger core running in multi-application mode.
+[ 2017-10-29 08:32:41.7509 60699/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:732 ]: Passenger core online, PID 60699
+[ 2017-10-29 08:32:41.7649 60701/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:529 ]: Starting Passenger UstRouter...
+[ 2017-10-29 08:32:41.7696 60701/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:342 ]: Passenger UstRouter online, PID 60701
+App 60712 stdout: 
+
+
+[ 2017-10-29 12:13:55.7388 60701/0x70000676b000 age/Ust/UstRouterMain.cpp:422 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-29 12:13:55.7390 60699/0x70000564f000 age/Cor/CoreMain.cpp:532 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-10-29 12:13:55.7395 60701/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:492 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-29 12:13:55.7395 60699/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:901 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-10-29 12:13:55.7400 60701/0x70000676b000 Ser/Server.h:464 ]: [UstRouter] Shutdown finished
+[ 2017-10-29 12:13:55.7401 60701/0x700006871000 Ser/Server.h:816 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-10-29 12:13:55.7402 60701/0x700006871000 Ser/Server.h:464 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-10-29 12:13:55.7396 60699/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 60712, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-29 12:13:55.7412 60699/0x70000564f000 Ser/Server.h:816 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-10-29 12:13:55.7413 60699/0x70000564f000 Ser/Server.h:464 ]: [ServerThr.1] Shutdown finished
+[ 2017-10-29 12:13:55.7415 60699/0x700005755000 Ser/Server.h:816 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-10-29 12:13:55.7415 60699/0x700005755000 Ser/Server.h:464 ]: [ServerThr.2] Shutdown finished
+[ 2017-10-29 12:13:55.7418 60699/0x70000585b000 Ser/Server.h:816 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-10-29 12:13:55.7418 60699/0x70000585b000 Ser/Server.h:464 ]: [ServerThr.3] Shutdown finished
+[ 2017-10-29 12:13:55.7418 60699/0x700005961000 Ser/Server.h:816 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-10-29 12:13:55.7419 60699/0x700005961000 Ser/Server.h:464 ]: [ServerThr.4] Shutdown finished
+[ 2017-10-29 12:13:55.7421 60699/0x700005a67000 Ser/Server.h:816 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-10-29 12:13:55.7421 60699/0x700005a67000 Ser/Server.h:464 ]: [ApiServer] Shutdown finished
+[ 2017-10-29 12:13:55.7422 60699/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:819 ]: Checking whether to disconnect long-running connections for process 60712, application /Users/alan/sites/combogames/public (development)
+[ 2017-10-29 12:13:55.7430 60701/0x7fffe4ac33c0 age/Ust/UstRouterMain.cpp:523 ]: Passenger UstRouter shutdown finished
+[ 2017-10-29 12:13:55.8570 60699/0x7fffe4ac33c0 age/Cor/CoreMain.cpp:967 ]: Passenger core shutdown finished
